@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRALITY GAMES | Enterprise Metaverse Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #020617;
+            --text: #ffffff;
+            --text-muted: #94a3b8;
+            --card-bg: #0f172a;
+            --border: rgba(255, 255, 255, 0.08);
+            --primary-grad: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --accent: #818cf8;
+            --glass: rgba(2, 6, 23, 0.92);
+        }
+
+        [data-theme="light"] {
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --text-muted: #475569;
+            --card-bg: #ffffff;
+            --border: rgba(15, 23, 42, 0.1);
+            --glass: rgba(248, 250, 252, 0.92);
+            --accent: #4f46e5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.8; transition: background 0.6s ease; }
+
+        header { 
+            padding: 25px 0; position: fixed; top: 0; width: 100%; z-index: 1000;
+            backdrop-filter: blur(20px); background: var(--glass); border-bottom: 1px solid var(--border);
+            opacity: 0; transform: translateY(-20px); transition: 0.4s ease;
+        }
+        header.scrolled { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 85%; max-width: 1400px; margin: 0 auto; }
+        
+        .icon-btn {
+            background: var(--border); color: var(--text); border: none; 
+            width: 55px; height: 55px; border-radius: 14px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        }
+        .icon-btn:hover { background: var(--accent); color: white; transform: translateY(-2px); }
+        .icon-btn svg { width: 24px; height: 24px; fill: currentColor; }
+
+        .splash { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
+        .splash h1 {
+            font-size: clamp(3.5rem, 12vw, 9rem); font-weight: 800; letter-spacing: -6px;
+            background: var(--primary-grad); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; line-height: 0.85; text-transform: uppercase;
+        }
+
+        .container { width: 85%; max-width: 1400px; margin: 0 auto; }
+        section { padding: 250px 0; border-bottom: 1px solid var(--border); }
+        .section-tag { color: var(--accent); font-weight: 800; letter-spacing: 6px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 40px; display: block; }
+        .section-title { font-size: 4.5rem; letter-spacing: -3px; margin-bottom: 60px; line-height: 1.1; }
+        .big-p { font-size: 2rem; color: var(--text-muted); max-width: 1000px; margin-bottom: 80px; line-height: 1.5; }
+
+        /* --- SPEED ENGINE BLOCK --- */
+        .speed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .stat-massive { font-size: 8rem; font-weight: 800; background: var(--primary-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        
+        /* --- CARDS --- */
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+        .card { padding: 80px 60px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 40px; transition: 0.4s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-10px); }
+        
+        /* --- REVIEW MASONRY --- */
+        .review-wall { columns: 2 450px; column-gap: 40px; margin-top: 100px; }
+        .review-card { break-inside: avoid; background: var(--card-bg); padding: 50px; border-radius: 35px; border: 1px solid var(--border); margin-bottom: 40px; transition: 0.3s; }
+        .review-card:hover { border-color: var(--accent); }
+
+        .btn-link {
+            display: inline-flex; align-items: center; gap: 15px;
+            padding: 22px 50px; background: var(--text); color: var(--bg);
+            text-decoration: none; font-weight: 800; border-radius: 100px;
+            font-size: 1.2rem; transition: 0.3s;
+        }
+        .btn-link:hover { transform: scale(1.05); background: var(--accent); color: white; }
+
+        .reveal { opacity: 0; transform: translateY(80px); transition: 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        footer { padding: 300px 0; text-align: center; background: #000; }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <header id="topBar">
+        <div class="nav-inner">
+            <div style="font-weight: 800; font-size: 1.6rem; letter-spacing: -1.5px;">VIRALITY GAMES</div>
+            <div style="display: flex; gap: 15px;">
+                <button class="icon-btn" onclick="toggleTheme()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+                <button class="icon-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})"><svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="splash">
+        <h1>VIRALITY<br>GAMES</h1>
+        <p style="opacity: 0.4; letter-spacing: 15px; font-weight: 800; font-size: 1rem; margin-top: 50px; text-transform: uppercase;">Performance First Architecture</p>
+    </div>
+
+    <main class="container">
+        
+        <section>
+            <span class="section-tag">Performance Engine</span>
+            <h2 class="section-title reveal">Blazingly <span style="color:var(--accent)">Fast</span> Execution</h2>
+            <div class="speed-grid">
+                <div class="reveal">
+                    <p class="big-p">We architect our games with a "Zero-Waste" philosophy. By optimizing core loops and utilizing proprietary Luau data-streaming, we achieve frame timings that industry standards simply cannot match.</p>
+                    <div style="display: flex; gap: 40px; margin-top: 50px;">
+                        <div>
+                            <div class="stat-massive">< 15ms</div>
+                            <p style="font-weight: 800; letter-spacing: 2px;">LOGIC ROUNDTRIP</p>
+                        </div>
+                        <div>
+                            <div class="stat-massive">60 FPS</div>
+                            <p style="font-weight: 800; letter-spacing: 2px;">LOCKED PERFORMANCE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card reveal" style="background: rgba(99, 102, 241, 0.1);">
+                    <h3>Instant Initialization</h3>
+                    <p>Our loading sequences are non-blocking. Players enter the world and begin interaction within 2.4 seconds of joining, bypassing traditional asset bottlenecks.</p>
+                </div>
+            </div>
+            
+        </section>
+
+        <section>
+            <span class="section-tag">Ecosystem Hubs</span>
+            <h2 class="section-title reveal">Group <span style="color:var(--accent)">Echelons</span></h2>
+            <div class="feature-grid">
+                <div class="card reveal">
+                    <h3>Virality Games</h3>
+                    <p>The production nucleus. Engineering high-velocity logic and high-impact world design.</p>
+                    <a href="https://roblox.com/communities/841655795" target="_blank" class="btn-link">SYSTEM ACCESS ↗</a>
+                </div>
+                <div class="card reveal">
+                    <h3>Virality Fans</h3>
+                    <p>The network layer. Managing community metadata and ecosystem-wide social rewards.</p>
+                    <a href="https://roblox.com/communities/858079631" target="_blank" class="btn-link">NETWORK ENTRY ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews">
+            <span class="section-tag">Historical Validation</span>
+            <h2 class="section-title reveal">The Wall of <span style="color:var(--accent)">Trust</span></h2>
+            <div class="review-wall" id="wall">
+                </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <h2 style="font-size: clamp(3rem, 15vw, 12rem); letter-spacing: -8px;">VIRALITY GAMES</h2>
+        <p style="opacity: 0.2; font-weight: 800; letter-spacing: 20px; margin-top: 50px;">GLOBAL SYSTEMS 2026</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+            reveal();
+        });
+
+        function toggleTheme() {
+            const body = document.body;
+            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+
+        function reveal() {
+            document.querySelectorAll(".reveal").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add("active");
+            });
+        }
+
+        const feedback = [
+            { name: "VirtualFreddy01", date: "5+ Years", text: "Technical optimization is flawless. Industry leading performance metrics." },
+            { name: "User_8441", date: "3 Years", text: "Incredibly smooth gameplay and professional community management on all fronts." },
+            { name: "whyismyuser4", date: "5+ Years", text: "Proprietary AI systems here are the real deal. Scalability is unmatched." },
+            { name: "Podnip_Admin", date: "4 Years", text: "Zero downtime infrastructure. Stable, rewarding loops for all player types." },
+            { name: "stairspend", date: "5+ Years", text: "The physics in Virality Obby are the most responsive on the platform." },
+            { name: "Roblox_Investor_26", date: "5+ Years", text: "A massive ecosystem with a clearly defined future and high-tier retention stats." },
+            { name: "opuadm", date: "5+ Years", text: "The UI/UX across all divisions is second to none. Pure professionalism." },
+            { name: "Market_Expert_99", date: "2 Years", text: "Successfully integrating AI to drive session growth across all games." },
+            { name: "Alpha_Tester_X", date: "6 Years", text: "Professionalism at every level. The backend logic is enterprise-grade." },
+            { name: "Meta_Growth", date: "3 Years", text: "The most scalable Roblox infrastructure I've interacted with in years." }
+        ];
+
+        function load() {
+            const wall = document.getElementById('wall');
+            feedback.forEach(f => {
+                wall.innerHTML += `
+                    <div class="review-card reveal">
+                        <span style="font-weight: 800; color: var(--accent); font-size: 0.8rem; letter-spacing: 3px;">${f.date}</span>
+                        <h4 style="font-size: 1.8rem; margin: 15px 0;">${f.name}</h4>
+                        <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.5;">"${f.text}"</p>
+                    </div>
+                `;
+            });
+            reveal();
+        }
+        window.onload = load;
+    </script>
+</body>
+</html>
