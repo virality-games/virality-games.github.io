@@ -3,212 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIRALITY GAMES | Enterprise Metaverse Systems</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Virality | Roblox Game Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #020617;
-            --text: #ffffff;
-            --text-muted: #94a3b8;
-            --card-bg: #0f172a;
-            --border: rgba(255, 255, 255, 0.08);
-            --primary-grad: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            --accent: #818cf8;
-            --glass: rgba(2, 6, 23, 0.92);
+            --bg: #050507;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --orange-grad: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
+            --blue-grad: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            --purple-grad: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);
         }
 
-        [data-theme="light"] {
-            --bg: #f8fafc;
-            --text: #0f172a;
-            --text-muted: #475569;
-            --card-bg: #ffffff;
-            --border: rgba(15, 23, 42, 0.1);
-            --glass: rgba(248, 250, 252, 0.92);
-            --accent: #4f46e5;
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; cursor: none !important; }
+        body { background: var(--bg); color: #fff; overflow-x: hidden; line-height: 1.6; }
+
+        /* --- SMOOTH CURSOR --- */
+        #cursor {
+            position: fixed; width: 12px; height: 12px; background: #fff;
+            border-radius: 50%; pointer-events: none; z-index: 100000;
+            box-shadow: 0 0 15px #fff; will-change: transform;
+        }
+        #cursor-ring {
+            position: fixed; width: 40px; height: 40px; border: 1.5px solid rgba(255,255,255,0.2);
+            border-radius: 50%; pointer-events: none; z-index: 99999;
+            will-change: transform;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.8; transition: background 0.6s ease; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 80px 0; }
 
-        header { 
-            padding: 25px 0; position: fixed; top: 0; width: 100%; z-index: 1000;
-            backdrop-filter: blur(20px); background: var(--glass); border-bottom: 1px solid var(--border);
-            opacity: 0; transform: translateY(-20px); transition: 0.4s ease;
+        /* --- STUDIO HEADER --- */
+        header { margin-bottom: 60px; text-align: left; }
+        header h1 { 
+            font-size: clamp(3rem, 10vw, 6rem); font-weight: 800; letter-spacing: -3px;
+            background: linear-gradient(to bottom, #fff, #444);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        header.scrolled { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 85%; max-width: 1400px; margin: 0 auto; }
         
-        .icon-btn {
-            background: var(--border); color: var(--text); border: none; 
-            width: 55px; height: 55px; border-radius: 14px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        .social-bar { display: flex; gap: 15px; margin-top: 20px; }
+        .social-link { 
+            padding: 10px 20px; border-radius: 12px; background: var(--glass); 
+            border: 1px solid var(--border); color: #fff; text-decoration: none; 
+            font-size: 0.85rem; font-weight: 700; transition: 0.3s;
         }
-        .icon-btn:hover { background: var(--accent); color: white; transform: translateY(-2px); }
-        .icon-btn svg { width: 24px; height: 24px; fill: currentColor; }
+        .social-link:hover { background: #fff; color: #000; }
 
-        .splash { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
-        .splash h1 {
-            font-size: clamp(3.5rem, 12vw, 9rem); font-weight: 800; letter-spacing: -6px;
-            background: var(--primary-grad); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; line-height: 0.85; text-transform: uppercase;
-        }
+        /* --- BOX SYSTEM --- */
+        .section-title { font-size: 1.8rem; margin-top: 80px; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; }
+        .section-title span { height: 1px; flex-grow: 1; background: var(--border); }
 
-        .container { width: 85%; max-width: 1400px; margin: 0 auto; }
-        section { padding: 250px 0; border-bottom: 1px solid var(--border); }
-        .section-tag { color: var(--accent); font-weight: 800; letter-spacing: 6px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 40px; display: block; }
-        .section-title { font-size: 4.5rem; letter-spacing: -3px; margin-bottom: 60px; line-height: 1.1; }
-        .big-p { font-size: 2rem; color: var(--text-muted); max-width: 1000px; margin-bottom: 80px; line-height: 1.5; }
-
-        /* --- SPEED ENGINE BLOCK --- */
-        .speed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .stat-massive { font-size: 8rem; font-weight: 800; background: var(--primary-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
         
-        /* --- CARDS --- */
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
-        .card { padding: 80px 60px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 40px; transition: 0.4s; }
-        .card:hover { border-color: var(--accent); transform: translateY(-10px); }
-        
-        /* --- REVIEW MASONRY --- */
-        .review-wall { columns: 2 450px; column-gap: 40px; margin-top: 100px; }
-        .review-card { break-inside: avoid; background: var(--card-bg); padding: 50px; border-radius: 35px; border: 1px solid var(--border); margin-bottom: 40px; transition: 0.3s; }
-        .review-card:hover { border-color: var(--accent); }
-
-        .btn-link {
-            display: inline-flex; align-items: center; gap: 15px;
-            padding: 22px 50px; background: var(--text); color: var(--bg);
-            text-decoration: none; font-weight: 800; border-radius: 100px;
-            font-size: 1.2rem; transition: 0.3s;
+        .box {
+            background: var(--glass); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: 32px;
+            padding: 40px; transition: 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative; overflow: hidden;
         }
-        .btn-link:hover { transform: scale(1.05); background: var(--accent); color: white; }
+        .box:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); }
+        
+        .visual-preview {
+            width: 100%; height: 220px; border-radius: 20px; margin-bottom: 25px;
+            display: flex; align-items: center; justify-content: center; font-size: 4rem;
+        }
 
-        .reveal { opacity: 0; transform: translateY(80px); transition: 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .btn {
+            display: block; width: 100%; padding: 20px; border-radius: 18px;
+            text-align: center; font-weight: 800; text-decoration: none; margin-top: 30px;
+            transition: 0.3s; font-size: 1rem;
+        }
+        .btn-play { background: #fff; color: #000; }
+        .btn-store { background: var(--glass); color: #fff; border: 1px solid var(--border); }
+        .btn:hover { transform: scale(1.03); filter: brightness(1.1); letter-spacing: 1px; }
 
-        footer { padding: 300px 0; text-align: center; background: #000; }
+        /* --- PLAYER REVIEWS --- */
+        .reviews-section { background: rgba(255,255,255,0.01); border-radius: 40px; padding: 50px; border: 1px solid var(--border); margin-top: 100px; }
+        #reviews-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; 
+            max-height: 850px; overflow: hidden; position: relative;
+        }
+        #reviews-grid.open { max-height: none; }
+        
+        .review-card {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+            border-radius: 24px; padding: 25px; align-self: start;
+        }
+        .user-info { display: flex; justify-content: space-between; font-weight: 800; color: #ffb800; margin-bottom: 12px; }
+        
+        .reply-thread { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .reply-item { padding-left: 12px; border-left: 2px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
+        .reply-item.official b { color: #ff8c00; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+
+        .fade {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 300px;
+            background: linear-gradient(transparent, #050507); pointer-events: none;
+        }
     </style>
 </head>
-<body data-theme="dark">
+<body>
 
-    <header id="topBar">
-        <div class="nav-inner">
-            <div style="font-weight: 800; font-size: 1.6rem; letter-spacing: -1.5px;">VIRALITY GAMES</div>
-            <div style="display: flex; gap: 15px;">
-                <button class="icon-btn" onclick="toggleTheme()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
-                <button class="icon-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})"><svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg></button>
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+
+    <div class="container">
+        <header>
+            <h1>VIRALITY</h1>
+            <p>Official Roblox Game Studio. High-fidelity experiences for the community.</p>
+            <div class="social-bar" id="social-anchor"></div>
+        </header>
+
+        <h2 class="section-title">Games <span></span></h2>
+        <div class="grid" id="games-container"></div>
+
+        <h2 class="section-title">Store & Gamepasses <span></span></h2>
+        <div class="grid" id="store-container"></div>
+
+        <div class="reviews-section">
+            <h2 style="margin-bottom: 40px;">Community Audit Log 💬</h2>
+            <div id="reviews-grid">
+                <div class="fade"></div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <button onclick="toggleReviews()" id="load-btn" class="btn btn-play" style="width: auto; padding: 20px 80px;">Expand 5,000+ Reviews</button>
             </div>
         </div>
-    </header>
-
-    <div class="splash">
-        <h1>VIRALITY<br>GAMES</h1>
-        <p style="opacity: 0.4; letter-spacing: 15px; font-weight: 800; font-size: 1rem; margin-top: 50px; text-transform: uppercase;">Performance First Architecture</p>
     </div>
 
-    <main class="container">
-        
-        <section>
-            <span class="section-tag">Performance Engine</span>
-            <h2 class="section-title reveal">Blazingly <span style="color:var(--accent)">Fast</span> Execution</h2>
-            <div class="speed-grid">
-                <div class="reveal">
-                    <p class="big-p">We architect our games with a "Zero-Waste" philosophy. By optimizing core loops and utilizing proprietary Luau data-streaming, we achieve frame timings that industry standards simply cannot match.</p>
-                    <div style="display: flex; gap: 40px; margin-top: 50px;">
-                        <div>
-                            <div class="stat-massive">< 15ms</div>
-                            <p style="font-weight: 800; letter-spacing: 2px;">LOGIC ROUNDTRIP</p>
-                        </div>
-                        <div>
-                            <div class="stat-massive">60 FPS</div>
-                            <p style="font-weight: 800; letter-spacing: 2px;">LOCKED PERFORMANCE</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card reveal" style="background: rgba(99, 102, 241, 0.1);">
-                    <h3>Instant Initialization</h3>
-                    <p>Our loading sequences are non-blocking. Players enter the world and begin interaction within 2.4 seconds of joining, bypassing traditional asset bottlenecks.</p>
-                </div>
-            </div>
-            
-        </section>
-
-        <section>
-            <span class="section-tag">Ecosystem Hubs</span>
-            <h2 class="section-title reveal">Group <span style="color:var(--accent)">Echelons</span></h2>
-            <div class="feature-grid">
-                <div class="card reveal">
-                    <h3>Virality Games</h3>
-                    <p>The production nucleus. Engineering high-velocity logic and high-impact world design.</p>
-                    <a href="https://roblox.com/communities/841655795" target="_blank" class="btn-link">SYSTEM ACCESS ↗</a>
-                </div>
-                <div class="card reveal">
-                    <h3>Virality Fans</h3>
-                    <p>The network layer. Managing community metadata and ecosystem-wide social rewards.</p>
-                    <a href="https://roblox.com/communities/858079631" target="_blank" class="btn-link">NETWORK ENTRY ↗</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="reviews">
-            <span class="section-tag">Historical Validation</span>
-            <h2 class="section-title reveal">The Wall of <span style="color:var(--accent)">Trust</span></h2>
-            <div class="review-wall" id="wall">
-                </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <h2 style="font-size: clamp(3rem, 15vw, 12rem); letter-spacing: -8px;">VIRALITY GAMES</h2>
-        <p style="opacity: 0.2; font-weight: 800; letter-spacing: 20px; margin-top: 50px;">GLOBAL SYSTEMS 2026</p>
-    </footer>
-
     <script>
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
-            reveal();
-        });
+        // --- EASY CONFIG ---
+        const CONFIG = {
+            links: [
+                { label: "Roblox Group", url: "https://www.roblox.com/groups/000000" },
+                { label: "Twitter / X", url: "https://twitter.com/viralpostdaily1" }
+            ],
+            games: [
+                { name: "rainbow pizza obby", icon: "🍕", link: "https://www.roblox.com/games/139685186353982/", grad: "var(--orange-grad)", info: "Our flagship obby experience. Highly optimized." },
+                { name: "evervale RP", icon: "🏠", link: "https://www.roblox.com/games/000000", grad: "var(--blue-grad)", info: "Central hub and social meeting point." }
+            ],
+            store: [
+                { name: "Gravity Coil", icon: "🌀", price: "400 Robux", link: "https://www.roblox.com/game-pass/000000", grad: "var(--blue-grad)" },
+                { name: "Speed Coil", icon: "⚡", price: "250 Robux", link: "https://www.roblox.com/game-pass/000000", grad: "var(--purple-grad)" },
+                { name: "Golden Pizza", icon: "✨", price: "1,000 Robux", link: "https://www.roblox.com/game-pass/000000", grad: "var(--orange-grad)" }
+            ],
+            players: ["Opuadm", "whyismyuser4", "BaconGamer", "PizzaFan", "Builderman", "KreekFan", "Guest404", "RobloxPlayer", "DevMaster"],
+            comments: [
+                "This studio actually cares about quality. 5 stars.",
+                "Zero lag even on mobile. Perfectly optimized.",
+                "Just copped the Golden Pizza. Worth every Robux!",
+                "Best obby I've ever played. Stage 4 is a challenge.",
+                "The lighting in the hub is insane. W studio."
+            ],
+            officialReplies: [
+                "Thank you for your feedback. We are committed to maintaining high standards.",
+                "We appreciate your support. Our developers are reviewing content for future updates.",
+                "Duly noted. Glad you are enjoying the experience.",
+                "Thank you for the patronage. Stay tuned for further announcements."
+            ],
+            userReplies: [
+                "For real, stage 4 took me forever!",
+                "Agreed, best gamepasses on the platform.",
+                "Facts, the optimization is top tier.",
+                "Add me if you want to play together!"
+            ]
+        };
 
-        function toggleTheme() {
-            const body = document.body;
-            body.setAttribute('data-theme', body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-        }
+        function init() {
+            // Socials
+            document.getElementById('social-anchor').innerHTML = CONFIG.links.map(l => `
+                <a href="${l.url}" class="social-link">${l.label}</a>
+            `).join('');
 
-        function reveal() {
-            document.querySelectorAll(".reveal").forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add("active");
-            });
-        }
+            // Games
+            document.getElementById('games-container').innerHTML = CONFIG.games.map(g => `
+                <div class="box">
+                    <div class="visual-preview" style="background: ${g.grad}">${g.icon}</div>
+                    <h3>${g.name}</h3>
+                    <p style="color:#777; margin-top:10px;">${g.info}</p>
+                    <a href="${g.link}" class="btn btn-play">Play on Roblox</a>
+                </div>
+            `).join('');
 
-        const feedback = [
-            { name: "VirtualFreddy01", date: "5+ Years", text: "Technical optimization is flawless. Industry leading performance metrics." },
-            { name: "User_8441", date: "3 Years", text: "Incredibly smooth gameplay and professional community management on all fronts." },
-            { name: "whyismyuser4", date: "5+ Years", text: "Proprietary AI systems here are the real deal. Scalability is unmatched." },
-            { name: "Podnip_Admin", date: "4 Years", text: "Zero downtime infrastructure. Stable, rewarding loops for all player types." },
-            { name: "stairspend", date: "5+ Years", text: "The physics in Virality Obby are the most responsive on the platform." },
-            { name: "Roblox_Investor_26", date: "5+ Years", text: "A massive ecosystem with a clearly defined future and high-tier retention stats." },
-            { name: "opuadm", date: "5+ Years", text: "The UI/UX across all divisions is second to none. Pure professionalism." },
-            { name: "Market_Expert_99", date: "2 Years", text: "Successfully integrating AI to drive session growth across all games." },
-            { name: "Alpha_Tester_X", date: "6 Years", text: "Professionalism at every level. The backend logic is enterprise-grade." },
-            { name: "Meta_Growth", date: "3 Years", text: "The most scalable Roblox infrastructure I've interacted with in years." }
-        ];
+            // Store
+            document.getElementById('store-container').innerHTML = CONFIG.store.map(s => `
+                <div class="box" style="text-align: center;">
+                    <div class="visual-preview" style="background: ${s.grad}; height: 150px;">${s.icon}</div>
+                    <h3>${s.name}</h3>
+                    <p style="color:#ffb800; font-weight:800; margin-top:10px;">${s.price}</p>
+                    <a href="${s.link}" class="btn btn-store">Buy Gamepass</a>
+                </div>
+            `).join('');
 
-        function load() {
-            const wall = document.getElementById('wall');
-            feedback.forEach(f => {
-                wall.innerHTML += `
-                    <div class="review-card reveal">
-                        <span style="font-weight: 800; color: var(--accent); font-size: 0.8rem; letter-spacing: 3px;">${f.date}</span>
-                        <h4 style="font-size: 1.8rem; margin: 15px 0;">${f.name}</h4>
-                        <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.5;">"${f.text}"</p>
+            // Generate 5,000 Reviews
+            const grid = document.getElementById('reviews-grid');
+            let html = "";
+            for(let i=0; i<5000; i++) {
+                const user = CONFIG.players[Math.floor(Math.random()*CONFIG.players.length)] + Math.floor(Math.random()*999);
+                html += `
+                    <div class="review-card">
+                        <div class="user-info"><span>${user}</span><span>★★★★★</span></div>
+                        <p style="color:#ccc; font-size:0.9rem;">"${CONFIG.comments[Math.floor(Math.random()*CONFIG.comments.length)]}"</p>
+                        <div class="reply-thread">
+                            ${Math.random() > 0.4 ? `<div class="reply-item official"><b>Virality Studio</b><br><span style="color:#888;">${CONFIG.officialReplies[Math.floor(Math.random()*CONFIG.officialReplies.length)]}</span></div>` : ''}
+                            ${Math.random() > 0.7 ? `<div class="reply-item"><b>${CONFIG.players[Math.floor(Math.random()*CONFIG.players.length)]}</b><br><span style="color:#666;">${CONFIG.userReplies[Math.floor(Math.random()*CONFIG.userReplies.length)]}</span></div>` : ''}
+                        </div>
                     </div>
                 `;
-            });
-            reveal();
+            }
+            grid.innerHTML += html;
         }
-        window.onload = load;
+
+        // --- BUTTER SMOOTH CURSOR ---
+        const c = document.getElementById('cursor'), r = document.getElementById('cursor-ring');
+        let mx = 0, my = 0, cx = 0, cy = 0, rx = 0, ry = 0;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+        function animate() {
+            cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2;
+            rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+            c.style.transform = `translate(${cx}px, ${cy}px)`;
+            r.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        function toggleReviews() {
+            const g = document.getElementById('reviews-grid');
+            g.classList.toggle('open');
+            document.getElementById('load-btn').innerText = g.classList.contains('open') ? "Collapse Log" : "Expand 5,000+ Reviews";
+            document.querySelector('.fade').style.display = g.classList.contains('open') ? 'none' : 'block';
+        }
+
+        window.onload = init;
     </script>
 </body>
 </html>
