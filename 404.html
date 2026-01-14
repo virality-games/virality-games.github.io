@@ -5,307 +5,255 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404</title>
     <style>
-        /* --- RESET & LAYOUT --- */
+        /* Basic setup to remove borders and make full screen */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            overflow: hidden;
-            background: #050505; /* Deepest black */
+            overflow: hidden; /* No scrolling */
+            background: #000; /* Pure black */
             height: 100vh;
             width: 100vw;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: sans-serif;
         }
 
-        /* --- LAYERS --- */
-        
-        /* Layer 1: The Hidden Text (Bottom) */
-        .hidden-message {
+        /* 1. THE SECRET TEXT (Hidden in the back) */
+        .secret-text {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 0;
-            color: rgba(255, 50, 50, 0.8); /* Red warning color */
-            font-family: 'Arial Black', sans-serif;
-            font-size: 5vw;
+            color: #3a0000; /* Very dark red - hard to see on black */
+            font-size: 5vw; /* Big text */
+            font-weight: 900;
+            z-index: 1; /* Sits at the bottom */
             white-space: nowrap;
-            letter-spacing: 5px;
-            opacity: 0.6;
-            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-            pointer-events: none;
             user-select: none;
-            animation: pulse 3s infinite ease-in-out;
+            text-shadow: 0 0 10px rgba(50, 0, 0, 0.5);
         }
 
-        /* Layer 2: The Canvas (Middle - Covers the text) */
+        /* 2. THE STARS (The Canvas) */
         #space-canvas {
-            display: block;
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 5; /* Sits ON TOP of the hidden message */
+            z-index: 2; /* Sits on top of the text */
         }
 
-        /* Layer 3: UI (Top) */
-        .overlay {
+        /* 3. THE BUTTON (UI) */
+        .container {
             position: absolute;
-            bottom: 10vh;
-            left: 0;
+            bottom: 50px;
             width: 100%;
+            text-align: center;
             z-index: 10;
-            display: flex;
-            justify-content: center;
-            pointer-events: none;
         }
 
         .home-btn {
-            pointer-events: auto;
+            color: white;
             text-decoration: none;
-            color: #fff;
-            font-family: sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 3px;
-            padding: 15px 50px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 0; /* Boxy sci-fi look */
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
+            border: 2px solid white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
             transition: 0.3s;
+            background: rgba(0,0,0,0.5);
             text-transform: uppercase;
         }
 
         .home-btn:hover {
-            background: #fff;
-            color: #000;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+            background: white;
+            color: black;
+            box-shadow: 0 0 20px white;
         }
-
-        /* CSS Animation for hidden text */
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; filter: blur(2px); }
-            50% { opacity: 0.8; filter: blur(0px); }
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="hidden-message">PAGE NOT FOUND.</div>
+    <div class="secret-text">PAGE NOT FOUND.</div>
 
     <canvas id="space-canvas"></canvas>
 
-    <div class="overlay">
-        <a href="/" class="home-btn">Return Base</a>
+    <div class="container">
+        <a href="/" class="home-btn">Go Home</a>
     </div>
 
     <script>
         const canvas = document.getElementById('space-canvas');
         const ctx = canvas.getContext('2d');
 
-        let particleArray = [];
+        let particles = [];
         let comets = [];
         
-        // MOUSE SETTINGS
+        // Mouse controls
         const mouse = {
             x: null,
             y: null,
-            radius: 70 // SMALLER RADIUS (Precision cutter)
+            radius: 60 // Small radius = precise cutting tool
         }
 
-        window.addEventListener('mousemove', function(event){
-            mouse.x = event.x;
-            mouse.y = event.y;
+        window.addEventListener('mousemove', function(e){
+            mouse.x = e.x;
+            mouse.y = e.y;
         });
 
-        // ----------------------------------------
-        // CLASS: TEXT PARTICLE (The "404")
-        // ----------------------------------------
+        // ------------------------------------
+        // THE STAR OBJECT
+        // ------------------------------------
         class Particle {
             constructor(x, y){
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.baseX = x; 
-                this.baseY = y;
-                // Slightly larger particles to create a better "curtain" to hide text
-                this.size = (Math.random() * 2) + 1.5; 
-                this.density = (Math.random() * 30) + 1;
-                // Icy Blue colors
-                const b = Math.floor(Math.random() * 55) + 200;
-                this.color = `rgba(200, 230, ${b}, 0.9)`;
+                this.homeX = x; // Where it wants to be
+                this.homeY = y;
+                this.size = Math.random() * 3 + 2; // Bigger stars to hide things better
+                this.color = 'white';
             }
             
             draw(){
                 ctx.fillStyle = this.color;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.closePath();
                 ctx.fill();
             }
 
             update(){
+                // Calculate distance from mouse
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx*dx + dy*dy);
-                let forceDirectionX = dx / distance;
-                let forceDirectionY = dy / distance;
-                let maxDistance = mouse.radius;
                 
-                // Physics: Repulsion
-                let force = (maxDistance - distance) / maxDistance;
-                let directionX = forceDirectionX * force * this.density;
-                let directionY = forceDirectionY * force * this.density;
-
+                // If mouse is close, push star away
                 if (distance < mouse.radius){
-                    // EXPLODE OUTWARD FAST
-                    this.x -= directionX * 8; 
-                    this.y -= directionY * 8;
+                    let forceX = dx / distance;
+                    let forceY = dy / distance;
+                    let force = (mouse.radius - distance) / mouse.radius;
+                    
+                    this.x -= forceX * force * 15; // Move fast
+                    this.y -= forceY * force * 15;
                 } else {
-                    // MAGNETIC RETURN
-                    if (this.x !== this.baseX){
-                        let dx = this.x - this.baseX;
-                        this.x -= dx/15;
+                    // If mouse is far, go home slowly
+                    if (this.x !== this.homeX){
+                        let dx = this.x - this.homeX;
+                        this.x -= dx/10;
                     }
-                    if (this.y !== this.baseY){
-                        let dy = this.y - this.baseY;
-                        this.y -= dy/15;
+                    if (this.y !== this.homeY){
+                        let dy = this.y - this.homeY;
+                        this.y -= dy/10;
                     }
                 }
             }
         }
 
-        // ----------------------------------------
-        // CLASS: COMET (Random Stuff)
-        // ----------------------------------------
+        // ------------------------------------
+        // THE COMET OBJECT (Random stuff)
+        // ------------------------------------
         class Comet {
             constructor(){
                 this.reset();
             }
-
+            
             reset(){
                 this.x = Math.random() * canvas.width;
-                this.y = 0 - Math.random() * 100; // Start above screen
+                this.y = -50; // Start above screen
+                this.speed = Math.random() * 5 + 2;
                 this.size = Math.random() * 3;
-                this.speedX = (Math.random() * -2) + 1; // Slight drift
-                this.speedY = (Math.random() * 5) + 3; // Fast down
-                this.length = (Math.random() * 80) + 20;
-                this.opacity = 0;
-                this.fadingIn = true;
-            }
-
-            draw(){
-                ctx.beginPath();
-                // Create a gradient tail
-                const gradient = ctx.createLinearGradient(this.x, this.y, this.x - (this.speedX * 5), this.y - this.length);
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
-                gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                
-                ctx.strokeStyle = gradient;
-                ctx.lineWidth = this.size;
-                ctx.moveTo(this.x, this.y);
-                ctx.lineTo(this.x - (this.speedX * 5), this.y - this.length);
-                ctx.stroke();
+                this.angle = Math.random() * 0.5; // Slight angle
             }
 
             update(){
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                // Fade in logic
-                if(this.fadingIn){
-                    this.opacity += 0.05;
-                    if(this.opacity >= 1) this.fadingIn = false;
-                }
-
-                // Reset if off screen
-                if (this.y > canvas.height + 100){
+                this.y += this.speed;
+                this.x += this.angle;
+                if(this.y > canvas.height){
                     this.reset();
                 }
             }
+
+            draw(){
+                ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+                ctx.fill();
+            }
         }
 
-        // ----------------------------------------
-        // INITIALIZATION
-        // ----------------------------------------
+        // ------------------------------------
+        // SETUP
+        // ------------------------------------
         function init(){
-            particleArray = [];
+            particles = [];
             comets = [];
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            // 1. Create Comets
-            for(let i=0; i<4; i++){
+            // 1. Create comets
+            for(let i=0; i<5; i++){
                 comets.push(new Comet());
             }
 
-            // 2. Scan Text for "404"
-            let fontSize = Math.min(canvas.width / 3, 400); 
-            ctx.font = '900 ' + fontSize + 'px Arial';
+            // 2. Setup the "404" text to scan
+            let fontSize = 350;
+            if(canvas.width < 800) fontSize = 150; // Smaller font for mobile
+            
             ctx.fillStyle = 'white';
+            ctx.font = '900 ' + fontSize + 'px Arial';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            
-            // Draw text temporarily to scan data
             ctx.fillText('404', canvas.width/2, canvas.height/2);
-            
-            // Define scan area (Optimization)
-            const textCoordinates = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            
-            // Clear the temporary text immediately
-            ctx.clearRect(0,0, canvas.width, canvas.height);
 
-            // 3. Create Particles from pixel data
-            // Step size: Smaller number = Denser particles = Better hiding of text behind
-            let step = 5; 
-            if(canvas.width > 2000) step = 8; // Optimization for big screens
+            // 3. Scan the pixels
+            const textData = ctx.getImageData(0,0, canvas.width, canvas.height);
+            ctx.clearRect(0,0, canvas.width, canvas.height); // Clear scan
 
-            for (let y = 0; y < canvas.height; y += step){
+            // 4. Create particles from pixels
+            // "step" controls density. Lower number = more particles = harder to see through
+            let step = 4; 
+            
+            for(let y = 0; y < canvas.height; y += step){
                 for(let x = 0; x < canvas.width; x += step){
-                    // Check alpha > 50%
-                    if (textCoordinates.data[(y * 4 * textCoordinates.width) + (x * 4) + 3] > 128){
-                        particleArray.push(new Particle(x, y));
+                    // If pixel is not transparent
+                    if(textData.data[(y * 4 * textData.width) + (x * 4) + 3] > 128){
+                        particles.push(new Particle(x, y));
                     }
                 }
             }
         }
 
-        // ----------------------------------------
+        // ------------------------------------
         // ANIMATION LOOP
-        // ----------------------------------------
+        // ------------------------------------
         function animate(){
-            // Clear canvas but keep transparency so we see the DOM text behind
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // 1. Draw Comets (Background layer of canvas)
+            
+            // Move Comets
             comets.forEach(comet => {
-                comet.draw();
                 comet.update();
+                comet.draw();
             });
 
-            // 2. Draw 404 Particles
-            for (let i = 0; i < particleArray.length; i++){
-                particleArray[i].draw();
-                particleArray[i].update();
-            }
+            // Move 404 Particles
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
             requestAnimationFrame(animate);
         }
 
-        // Start
+        // Start it up
         init();
         animate();
 
-        // Handle Resize
-        let resizeTimeout;
+        // Fix resizing
         window.addEventListener('resize', function(){
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(init, 100);
+            setTimeout(init, 100);
         });
-
-        // Mouse out reset
+        
+        // Reset mouse when leaving screen
         window.addEventListener('mouseout', function(){
             mouse.x = undefined;
             mouse.y = undefined;
-        });
+        })
 
     </script>
 </body>
