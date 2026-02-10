@@ -18,7 +18,7 @@ export const games: Game[] = [
     description: "Jump through colorful pizza-themed obstacle courses! A fan-favorite obby with tons of stages and vibrant worlds.",
     status: "active",
     statusLabel: "Active",
-    robloxUrl: "https://www.roblox.com/games/",
+    robloxUrl: "https://www.roblox.com/join/5nl6o",
     emoji: "🍕",
   },
   {
@@ -27,7 +27,7 @@ export const games: Game[] = [
     description: "Hop in your cart and ride through wild tracks filled with twists, turns, and surprises at every corner.",
     status: "active",
     statusLabel: "Active",
-    robloxUrl: "https://www.roblox.com/games/",
+    robloxUrl: "https://www.roblox.com/join/97xdw",
     emoji: "🛒",
   },
   {
@@ -44,8 +44,8 @@ export const games: Game[] = [
     title: "Esponja Obby",
     description: "Once a Top 10 game on Roblox! This beloved obby reached millions of players before being taken down.",
     status: "taken-down",
-    statusLabel: "Formerly Owned",
-    note: "Achieved Top 10 on Roblox. No longer under Virality Games ownership.",
+    statusLabel: "Taken Down",
+    note: "Achieved Top 10 on Roblox. Taken down by copyright owners.",
     emoji: "🧽",
   },
 ];
