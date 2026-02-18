@@ -1,252 +1,1225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virality Games | ROBLOX Game Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
-    <meta name="title" content="Virality Games |  ROBLOX Game studio">
-<meta name="description" content="Play Best Roblox Games for Kids! Top Roblox Games 2026, Safe Roblox Games for Kids, Fun Roblox Games, Roblox Obby, Roblox Simulator, Roblox Tycoon, Roblox Roleplay. Discover Trending Roblox Games, Free Roblox Games, New Roblox Games, Kid-Friendly Roblox Games, and Viral Roblox Games. Virality Games is your #1 source for Roblox games for girls, Roblox games for boys, and the best Roblox experiences for toddlers and kids. Play viral Roblox games now!">
-<meta name="keywords" content="Roblox, Roblox games, Roblox games for kids, Safe Roblox games, Fun Roblox games, Best Roblox games 2026, Trending Roblox games, Viral Roblox games, Roblox Obby, Roblox Simulator, Roblox Tycoon, Roblox Roleplay, Dress to Impress Roblox, Steal a Brainrot Roblox, Grow a Garden Roblox, Brookhaven RP, Blox Fruits, Adopt Me, Pet Simulator 99, Royale High, Murder Mystery 2, Tower of Hell, Doors Roblox, MeepCity, Sol's RNG, Toilet Tower Defense, Skibidi Roblox, Brainrot games, Aura Edit Battles, Phonk Tower, Sajonara Tower, Fisch Roblox, Blue Lock Rivals, Anime Defenders, Easy Obby for kids, Kid-friendly Roblox, Roblox for girls, Roblox for boys, Unblocked Roblox, Roblox games for 7 year olds, Roblox games for 10 year olds, Free Roblox games, New Roblox updates 2026, Roblox escape room, Hide and Seek Extreme, Barry's Prison Run, Pet Sim 99 codes, Roblox memes, Gen Alpha Roblox, Roblox brainrot keywords, how to play Roblox safe, best Roblox experiences, Roblox multiplayer.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══ PRIMARY META ═══ -->
+<title>Virality Games — Official Roblox Studio | Free Games by brokenhavenofiacal</title>
+<meta name="description" content="Virality Games is an independent Roblox game studio founded in 2023 by brokenhavenofiacal. Play Super Gaming Cart Ride and Rainbow Pizza Obby — both completely free on Roblox. Join our growing community of 4 groups!">
+<meta name="keywords" content="Virality Games, Roblox studio, Super Gaming Cart Ride, Rainbow Pizza Obby, brokenhavenofiacal, free Roblox games, Roblox obby, Roblox cart ride, Evervale RP">
+<meta name="author" content="brokenhavenofiacal / Virality Games">
 <meta name="robots" content="index, follow">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="language" content="English">
-<meta name="author" content="Virality">
+<meta name="theme-color" content="#e63946">
+<link rel="canonical" href="https://virality-games.roblox.com/">
 
-    
-    <style>
-        :root {
-            --bg: #030305;
-            --glass: rgba(255, 255, 255, 0.02);
-            --border: rgba(255, 255, 255, 0.08);
-            --orange-grad: linear-gradient(135deg, #ff8c00 0%, #ff4500 100%);
-            --blue-grad: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-            --purple-grad: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);
-        }
+<!-- ═══ OPEN GRAPH (Facebook, Discord, Slack, etc.) ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virality Games">
+<meta property="og:title" content="Virality Games — Free Roblox Games by brokenhavenofiacal">
+<meta property="og:description" content="Independent Roblox game studio founded in 2023. Play Super Gaming Cart Ride & Rainbow Pizza Obby — free on Roblox. 4 community groups and growing!">
+<meta property="og:url" content="https://virality-games.roblox.com/">
+<meta property="og:image" content="https://virality-games.roblox.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Virality Games — Official Roblox Studio">
+<meta property="og:locale" content="en_US">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; cursor: none !important; }
-        body { background: var(--bg); color: #fff; overflow-x: hidden; line-height: 1.6; }
+<!-- ═══ TWITTER / X CARD ═══ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@VGamesRoblox">
+<meta name="twitter:title" content="Virality Games — Free Roblox Games">
+<meta name="twitter:description" content="Play Super Gaming Cart Ride & Rainbow Pizza Obby free on Roblox. Independent studio by brokenhavenofiacal, founded 2023.">
+<meta name="twitter:image" content="https://virality-games.roblox.com/og-image.png">
+<meta name="twitter:image:alt" content="Virality Games banner">
 
-        /* --- IMMERSIVE STARFIELD --- */
-        #star-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none; }
-        .bg-glow { 
-            position: fixed; width: 100vw; height: 100vh; 
-            background: radial-gradient(circle at 50% 50%, rgba(255, 140, 0, 0.03) 0%, transparent 70%);
-            z-index: -1; pointer-events: none; 
-        }
+<!-- ═══ DISCORD SPECIFIC ═══ -->
+<!-- Discord reads og: tags — the above og: tags are sufficient. -->
+<!-- Adding color hint via theme-color for Discord embed accent -->
 
-        /* --- SMOOTH CURSOR --- */
-        #cursor { position: fixed; width: 8px; height: 8px; background: #fff; border-radius: 50%; pointer-events: none; z-index: 100000; box-shadow: 0 0 15px #fff; will-change: transform; }
-        #cursor-ring { position: fixed; width: 40px; height: 40px; border: 1.5px solid rgba(255,255,255,0.2); border-radius: 50%; pointer-events: none; z-index: 99999; will-change: transform; }
+<!-- ═══ STRUCTURED DATA (JSON-LD) ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Virality Games",
+  "alternateName": "Virality Games Studio",
+  "description": "Independent Roblox game studio founded in 2023 by brokenhavenofiacal. Creators of Super Gaming Cart Ride, Rainbow Pizza Obby, and more.",
+  "foundingDate": "2023",
+  "founder": {
+    "@type": "Person",
+    "name": "brokenhavenofiacal"
+  },
+  "url": "https://virality-games.roblox.com/",
+  "sameAs": [
+    "https://www.roblox.com/communities/841655795/VIRALITY-GAMES",
+    "https://www.roblox.com/communities/858079631/virality-fan",
+    "https://www.roblox.com/communities/487077807/Virality-Obby",
+    "https://www.roblox.com/communities/945214491/virality-cart-rides"
+  ]
+}
+</script>
 
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 100px 0; position: relative; }
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════ */
+:root{
+  --red:#e63946;--red2:#ff4d5a;--red3:#ff8a93;
+  --dark:#080810;--dark2:#0e0e1a;--dark3:#141425;--dark4:#1a1a35;
+  --glass:rgba(255,255,255,.04);--glassb:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.15);
+  --gold:#ffd700;--gold2:#ffaa00;--blue:#1e90ff;--cyan:#00d4ff;
+  --purple:#9333ea;--green:#10b981;--text:#f2f2ff;--dim:#8888aa;
+  --radius-sm:12px;--radius:20px;--radius-lg:28px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{font-family:'Nunito',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;}
 
-        /* --- HEADER --- */
-        header { margin-bottom: 80px; }
-        header h1 { 
-            font-size: clamp(3rem, 10vw, 7rem); font-weight: 800; letter-spacing: -4px;
-            background: linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.1) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        
-        .social-bar { display: flex; gap: 12px; margin-top: 25px; flex-wrap: wrap; }
-        .social-link { 
-            padding: 12px 24px; border-radius: 14px; background: var(--glass); 
-            border: 1px solid var(--border); color: #fff; text-decoration: none; 
-            font-size: 0.85rem; font-weight: 700; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-        }
-        .social-link:hover { background: #fff; color: #000; transform: translateY(-3px); }
+/* hide cursor on desktop only */
+@media(pointer:fine){body{cursor:none;}}
 
-        /* --- DYNAMIC GRID --- */
-        .section-title { font-size: 1.5rem; margin-top: 100px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 4px; color: rgba(255,255,255,0.4); }
+/* ═══════════════════════════════════════
+   CUSTOM CURSOR (desktop only)
+═══════════════════════════════════════ */
+#cursor,#cursor-dot{position:fixed;pointer-events:none;z-index:9999;display:none;}
+@media(pointer:fine){
+  #cursor{display:block;width:18px;height:18px;border:2px solid var(--red2);border-radius:50%;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
+  #cursor-dot{display:block;width:4px;height:4px;background:var(--red2);border-radius:50%;transform:translate(-50%,-50%);}
+  .cx #cursor{width:36px;height:36px;background:rgba(230,57,70,.12);}
+}
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px; }
-        
-        .box {
-            background: var(--glass); backdrop-filter: blur(20px);
-            border: 1px solid var(--border); border-radius: 35px;
-            padding: 45px; transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            position: relative; overflow: hidden;
-        }
-        .box:hover { transform: translateY(-12px) scale(1.02); border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
-        
-        .visual-preview {
-            width: 100%; height: 240px; border-radius: 22px; margin-bottom: 30px;
-            display: flex; align-items: center; justify-content: center; font-size: 5rem;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.2);
-        }
+/* ═══════════════════════════════════════
+   BACKGROUND
+═══════════════════════════════════════ */
+#bg{position:fixed;inset:0;z-index:0;background:var(--dark);overflow:hidden;}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(100px);animation:orbDrift linear infinite;}
+@keyframes orbDrift{
+  0%{transform:translate(0,0) scale(1);opacity:0;}
+  10%{opacity:1;}50%{transform:translate(var(--dx),var(--dy)) scale(1.3);}
+  90%{opacity:.6;}100%{transform:translate(calc(var(--dx)*2),calc(var(--dy)*2)) scale(.8);opacity:0;}
+}
+.grid-overlay{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:60px 60px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+}
+.scanline{position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);}
+#pxl{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.pixel{position:absolute;border-radius:2px;animation:rise linear infinite;}
+@keyframes rise{0%{transform:translateY(110vh) rotate(0);opacity:0;}8%{opacity:.6;}92%{opacity:.25;}100%{transform:translateY(-10vh) rotate(720deg);opacity:0;}}
 
-        .btn {
-            display: block; width: 100%; padding: 22px; border-radius: 20px;
-            text-align: center; font-weight: 800; text-decoration: none; margin-top: 30px;
-            transition: 0.3s; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;
-        }
-        .btn-play { background: #fff; color: #000; }
-        .btn-store { background: var(--glass); color: #fff; border: 1px solid var(--border); }
-        .btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(16px,4vw,48px);height:64px;
+  background:rgba(8,8,16,.82);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  animation:navIn .8s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes navIn{from{transform:translateY(-100%);opacity:0;}to{transform:none;opacity:1;}}
+.nav-logo{font-family:'Fredoka One',cursive;font-size:clamp(1.1rem,3vw,1.5rem);letter-spacing:1.5px;background:linear-gradient(120deg,var(--red2),var(--red3),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2.5vw,32px);}
+.nav-links a{font-size:.78rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .25s;position:relative;white-space:nowrap;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--red),var(--red3));transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.16,1,.3,1);}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{padding:8px 18px!important;border-radius:10px!important;background:linear-gradient(135deg,var(--red),var(--red3))!important;color:#fff!important;font-weight:900!important;box-shadow:0 4px 16px rgba(230,57,70,.35)!important;}
+.nav-cta::after{display:none!important;}
 
-        /* --- COMMUNITY AUDIT --- */
-        .reviews-section { background: rgba(255,255,255,0.01); border-radius: 50px; padding: 60px; border: 1px solid var(--border); margin-top: 120px; }
-        #reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; max-height: 900px; overflow: hidden; position: relative; }
-        #reviews-grid.open { max-height: none; }
-        
-        .review-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 28px; padding: 30px; align-self: start; }
-        .user-info { display: flex; justify-content: space-between; font-weight: 800; color: #ffb800; margin-bottom: 15px; }
-        
-        .reply-thread { margin-top: 20px; display: flex; flex-direction: column; gap: 12px; }
-        .reply-item { padding-left: 15px; border-left: 2px solid rgba(255,255,255,0.1); font-size: 0.85rem; }
-        .reply-item.official b { color: #ff8c00; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; }
+/* hamburger for mobile */
+.nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;cursor:pointer;}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--dim);border-radius:2px;transition:all .3s;}
+.nav-mobile{
+  display:none;position:fixed;top:64px;left:0;right:0;z-index:499;
+  background:rgba(8,8,16,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  padding:0;max-height:0;overflow:hidden;
+  transition:max-height .4s cubic-bezier(.16,1,.3,1),padding .3s;
+}
+.nav-mobile.open{max-height:420px;padding:16px 0 24px;}
+.nav-mobile a{display:block;padding:14px clamp(16px,4vw,32px);font-size:.95rem;font-weight:800;color:var(--dim);text-decoration:none;letter-spacing:.5px;text-transform:uppercase;transition:color .2s;}
+.nav-mobile a:hover{color:var(--red3);}
+.nav-mobile .mob-cta{margin:12px clamp(16px,4vw,32px) 0;display:block;text-align:center;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--red3));color:#fff!important;box-shadow:0 4px 20px rgba(230,57,70,.35);}
 
-        .fade { position: absolute; bottom: 0; left: 0; width: 100%; height: 400px; background: linear-gradient(transparent, var(--bg)); pointer-events: none; }
-    </style>
+@media(max-width:860px){
+  .nav-links{display:none;}
+  .nav-burger{display:flex;}
+  .nav-mobile{display:block;}
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:clamp(100px,18vh,140px) clamp(16px,5vw,48px) clamp(80px,12vh,100px);
+  position:relative;z-index:2;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:6px 18px;border-radius:999px;
+  background:var(--glass);border:1px solid var(--border2);backdrop-filter:blur(12px);
+  font-size:clamp(.62rem,.8vw,.72rem);font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--red3);
+  margin-bottom:28px;animation:fadeUp .8s .1s cubic-bezier(.16,1,.3,1) both;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--red2);flex-shrink:0;animation:livePulse 1.4s ease-in-out infinite;}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(230,57,70,.5);}50%{box-shadow:0 0 0 7px rgba(230,57,70,0);}}
+.hero-title{font-family:'Fredoka One',cursive;font-size:clamp(3.8rem,14vw,11rem);line-height:.9;animation:fadeUp .9s .25s cubic-bezier(.16,1,.3,1) both;}
+.hero-title .w1{display:block;background:linear-gradient(160deg,#fff 0%,#ccc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-title .w2{display:block;background:linear-gradient(135deg,var(--red) 0%,var(--red2) 40%,var(--red3) 70%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 60px rgba(230,57,70,.7));animation:shimmer 3s ease-in-out infinite;}
+@keyframes shimmer{0%,100%{filter:drop-shadow(0 0 50px rgba(230,57,70,.4));}50%{filter:drop-shadow(0 0 100px rgba(230,57,70,1));}}
+.hero-sub{font-size:clamp(.9rem,2vw,1.2rem);color:var(--dim);max-width:580px;line-height:1.8;margin:24px auto 0;animation:fadeUp .9s .4s cubic-bezier(.16,1,.3,1) both;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:36px;animation:fadeUp .9s .55s cubic-bezier(.16,1,.3,1) both;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:clamp(12px,2vw,16px) clamp(20px,4vw,36px);border-radius:var(--radius-sm);
+  background:linear-gradient(135deg,var(--red),var(--red2),var(--red3));color:#fff;
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(.85rem,1.5vw,1rem);
+  text-decoration:none;border:none;
+  box-shadow:0 6px 28px rgba(230,57,70,.38),inset 0 1px 0 rgba(255,255,255,.15);
+  transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden;
+}
+.btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .25s;}
+.btn-primary:hover,.btn-primary:focus-visible{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 36px rgba(230,57,70,.55);}
+.btn-primary:hover::before{opacity:1;}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:clamp(12px,2vw,16px) clamp(20px,4vw,36px);border-radius:var(--radius-sm);
+  background:var(--glass);border:1px solid var(--border2);color:var(--text);
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:clamp(.85rem,1.5vw,1rem);
+  text-decoration:none;backdrop-filter:blur(16px);transition:transform .25s,background .25s,border-color .25s;
+}
+.btn-ghost:hover,.btn-ghost:focus-visible{transform:translateY(-3px) scale(1.02);background:var(--glassb);border-color:rgba(255,255,255,.25);}
+
+/* stats row */
+.stats-wrap{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(20px);
+  border-radius:var(--radius);overflow:hidden;
+  margin-top:56px;animation:fadeUp .9s .7s cubic-bezier(.16,1,.3,1) both;
+}
+.stat-item{padding:clamp(14px,3vw,20px) clamp(20px,5vw,44px);text-align:center;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Orbitron',monospace;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;background:linear-gradient(135deg,var(--red2),var(--red3),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.stat-label{font-size:clamp(.6rem,.8vw,.68rem);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);margin-top:5px;}
+
+/* scroll hint */
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeIn 1s 1.5s both;}
+.scroll-mouse{width:22px;height:34px;border:2px solid rgba(255,255,255,.2);border-radius:11px;display:flex;justify-content:center;}
+.scroll-wheel{width:3px;height:6px;background:var(--red2);border-radius:3px;margin-top:5px;animation:scrollBounce 1.5s ease-in-out infinite;}
+@keyframes scrollBounce{0%,100%{transform:translateY(0);opacity:1;}50%{transform:translateY(7px);opacity:.4;}}
+.scroll-label{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
+@media(max-width:480px){.scroll-hint{display:none;}}
+
+/* ═══════════════════════════════════════
+   MARQUEE
+═══════════════════════════════════════ */
+.marquee-wrap{position:relative;z-index:2;background:linear-gradient(135deg,#c1121f,var(--red),#e63946);padding:16px 0;overflow:hidden;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);}
+.marquee-track{display:flex;white-space:nowrap;animation:marqueeMove 24s linear infinite;will-change:transform;}
+@keyframes marqueeMove{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.marquee-item{display:inline-flex;align-items:center;gap:14px;padding:0 28px;font-family:'Fredoka One',cursive;font-size:clamp(.85rem,2vw,1.05rem);letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.9);}
+.msep{opacity:.4;font-size:1.2rem;}
+
+/* ═══════════════════════════════════════
+   SECTION SHARED
+═══════════════════════════════════════ */
+.section{position:relative;z-index:2;padding:clamp(60px,10vh,120px) clamp(16px,5vw,48px);max-width:1280px;margin:0 auto;width:100%;}
+.section-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:2.5px;color:var(--red2);margin-bottom:12px;}
+.section-eyebrow::before{content:'';width:24px;height:2px;background:linear-gradient(90deg,var(--red),var(--red3));border-radius:2px;display:block;flex-shrink:0;}
+.section-title{font-family:'Fredoka One',cursive;font-size:clamp(1.9rem,4.5vw,3.6rem);line-height:1.1;margin-bottom:14px;}
+.hi{background:linear-gradient(135deg,var(--red),var(--red3),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-body{color:var(--dim);font-size:clamp(.9rem,1.5vw,1.02rem);line-height:1.82;max-width:540px;margin-bottom:44px;}
+.section-divider{position:relative;z-index:2;height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);margin:0 clamp(16px,4vw,48px);}
+
+/* ═══════════════════════════════════════
+   GLASS CARD BASE
+═══════════════════════════════════════ */
+.gc{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:var(--radius);position:relative;overflow:hidden;}
+.gc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);}
+
+/* ═══════════════════════════════════════
+   GAMES — ACTIVE
+═══════════════════════════════════════ */
+.game-big-card{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:clamp(300px,50vw,500px);
+  margin-bottom:24px;
+  transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .3s;
+}
+.game-big-card:hover{transform:translateY(-8px);box-shadow:0 32px 80px rgba(0,0,0,.6);border-color:var(--border2);}
+.gv{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:clamp(200px,30vw,400px);}
+.gv-cart{background:linear-gradient(135deg,#06091a,#0a1628 40%,#0f2545 80%,#1a3a70);}
+.gv-pizza{background:linear-gradient(135deg,#0f0818,#2d0a3e 40%,#5a0a6b 70%,#8b1a8b);}
+.gv-blob{position:absolute;border-radius:50%;filter:blur(55px);pointer-events:none;}
+.game-emoji-big{font-size:clamp(5rem,10vw,9rem);line-height:1;transition:transform .5s cubic-bezier(.16,1,.3,1);filter:drop-shadow(0 0 35px rgba(255,255,255,.1));position:relative;z-index:2;}
+.game-big-card:hover .game-emoji-big{transform:scale(1.15) rotate(-5deg);}
+.gi{padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;justify-content:center;}
+.game-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:var(--glassb);border:1px solid var(--border2);font-size:.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--red3);margin-bottom:14px;width:fit-content;}
+.game-name-big{font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,3vw,2.6rem);line-height:1.1;margin-bottom:14px;}
+.game-desc-big{color:var(--dim);font-size:clamp(.85rem,1.3vw,.97rem);line-height:1.78;margin-bottom:20px;}
+.game-feats{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px;}
+.game-feats li{display:flex;align-items:flex-start;gap:10px;font-size:clamp(.82rem,1.2vw,.89rem);color:var(--dim);line-height:1.55;}
+.game-feats li::before{content:'✓';color:var(--green);font-weight:900;flex-shrink:0;margin-top:1px;}
+.game-meta-row{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.mpill{display:flex;align-items:center;gap:5px;padding:5px 12px;border-radius:9px;background:var(--glass);border:1px solid var(--border);font-size:.75rem;font-weight:700;color:var(--dim);}
+.play-btn-big{
+  display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:var(--radius-sm);
+  background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-weight:900;font-size:.92rem;
+  text-decoration:none;width:fit-content;
+  box-shadow:0 6px 22px rgba(230,57,70,.32);transition:transform .25s,box-shadow .25s;
+}
+.play-btn-big:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 32px rgba(230,57,70,.52);}
+.ribbon{position:absolute;top:16px;left:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-size:.62rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;padding:4px 11px;border-radius:999px;z-index:10;}
+
+/* mobile: stack game cards */
+@media(max-width:700px){
+  .game-big-card{grid-template-columns:1fr;}
+  .gv{min-height:180px;}
+  .game-emoji-big{font-size:5rem;}
+  .game-big-card .gi[style*="order:1"]{order:2!important;}
+  .game-big-card .gv[style*="order:2"]{order:1!important;}
+}
+
+/* ═══════════════════════════════════════
+   INACTIVE GAMES
+═══════════════════════════════════════ */
+.archive-header{display:flex;align-items:center;gap:14px;margin:48px 0 12px;}
+.archive-header-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.07),transparent);}
+.archive-header-label{font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#444;white-space:nowrap;}
+.inactive-toggle{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 24px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--radius-sm);width:100%;text-align:left;
+  transition:border-color .3s,background .3s;font-family:inherit;color:inherit;
+}
+.inactive-toggle:hover{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.04);}
+.itl{font-family:'Fredoka One',cursive;font-size:1rem;color:#555;flex:1;}
+.itm{font-size:.72rem;font-weight:700;color:#444;letter-spacing:1px;text-transform:uppercase;}
+.itch{font-size:.9rem;color:#444;transition:transform .35s cubic-bezier(.16,1,.3,1);}
+.inactive-open .itch{transform:rotate(180deg);}
+.inactive-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,1,.3,1);}
+.inactive-body.open{max-height:900px;}
+.inactive-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding-top:14px;}
+@media(max-width:580px){.inactive-grid{grid-template-columns:1fr;}}
+.inactive-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:var(--radius);overflow:hidden;transition:border-color .3s;}
+.inactive-card:hover{border-color:rgba(255,255,255,.09);}
+.inactive-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);}
+.inactive-card{position:relative;}
+.inactive-thumb{height:140px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0c0c0c,#181818,#202020);}
+.inactive-emoji{font-size:4.5rem;filter:grayscale(1) brightness(.3);transition:filter .3s;}
+.inactive-card:hover .inactive-emoji{filter:grayscale(1) brightness(.45);}
+.inactive-info{padding:22px;}
+.inactive-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#444;margin-bottom:10px;width:fit-content;}
+.inactive-name{font-family:'Fredoka One',cursive;font-size:1.3rem;color:#4a4a4a;margin-bottom:8px;}
+.inactive-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:rgba(180,40,40,.07);border:1px solid rgba(180,40,40,.15);font-size:.65rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#6a3030;margin-bottom:12px;width:fit-content;}
+.inactive-reason{color:#4a4a5a;font-size:.87rem;line-height:1.72;}
+
+/* ═══════════════════════════════════════
+   WHY GRID
+═══════════════════════════════════════ */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+@media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.why-grid{grid-template-columns:1fr;}}
+.why-card{padding:clamp(24px,3vw,36px) clamp(20px,2.5vw,28px);transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s;}
+.why-card:hover{transform:translateY(-7px) scale(1.01);border-color:var(--border2);}
+.wi-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;margin-bottom:18px;position:relative;flex-shrink:0;}
+.wi-bg{position:absolute;inset:0;border-radius:14px;opacity:.18;}
+.c1 .wi-bg{background:linear-gradient(135deg,var(--red),var(--red3));}
+.c2 .wi-bg{background:linear-gradient(135deg,var(--blue),var(--cyan));}
+.c3 .wi-bg{background:linear-gradient(135deg,var(--purple),#c026d3);}
+.c4 .wi-bg{background:linear-gradient(135deg,var(--gold),var(--gold2));}
+.c5 .wi-bg{background:linear-gradient(135deg,var(--green),#34d399);}
+.c6 .wi-bg{background:linear-gradient(135deg,#f97316,#fb923c);}
+.why-h{font-family:'Fredoka One',cursive;font-size:clamp(1.1rem,2vw,1.3rem);margin-bottom:9px;}
+.why-p{color:var(--dim);font-size:clamp(.82rem,1.2vw,.9rem);line-height:1.72;}
+
+/* ═══════════════════════════════════════
+   GROUPS GRID
+═══════════════════════════════════════ */
+.groups-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+@media(max-width:680px){.groups-grid{grid-template-columns:1fr;}}
+.group-card{
+  padding:clamp(22px,3vw,36px);text-decoration:none;color:inherit;
+  display:flex;align-items:flex-start;gap:clamp(16px,2.5vw,24px);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s;
+}
+.group-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius);background:linear-gradient(135deg,rgba(255,255,255,.03),transparent);opacity:0;transition:opacity .3s;pointer-events:none;}
+.group-card:hover{transform:translateY(-6px);border-color:var(--border2);box-shadow:0 18px 55px rgba(0,0,0,.4);}
+.group-card:hover::after{opacity:1;}
+.gib{width:clamp(56px,8vw,76px);height:clamp(56px,8vw,76px);border-radius:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:clamp(1.6rem,3vw,2.2rem);}
+.gib-main{background:linear-gradient(135deg,var(--red),#c1121f);box-shadow:0 8px 28px rgba(230,57,70,.38);}
+.gib-fan{background:linear-gradient(135deg,var(--purple),#a855f7);box-shadow:0 8px 28px rgba(147,51,234,.38);}
+.gib-obby{background:linear-gradient(135deg,var(--green),#34d399);box-shadow:0 8px 28px rgba(16,185,129,.38);}
+.gib-cart{background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 8px 28px rgba(30,144,255,.38);}
+.ginfo{flex:1;min-width:0;}
+.gbadge{font-size:.62rem;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--dim);margin-bottom:5px;}
+.gname{font-family:'Fredoka One',cursive;font-size:clamp(1.1rem,2.5vw,1.4rem);margin-bottom:7px;}
+.gdesc{color:var(--dim);font-size:clamp(.82rem,1.2vw,.88rem);line-height:1.65;margin-bottom:12px;}
+.glink{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:800;color:var(--red3);}
+.garr{transition:transform .2s;}
+.group-card:hover .garr{transform:translateX(4px);}
+
+/* ═══════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════ */
+.tl{position:relative;padding-left:38px;}
+.tl::before{content:'';position:absolute;top:0;bottom:0;left:14px;width:2px;background:linear-gradient(to bottom,var(--red),var(--purple),var(--blue),transparent);border-radius:2px;}
+.tl-item{position:relative;margin-bottom:46px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-dot{position:absolute;left:-30px;top:5px;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--red3));border:3px solid var(--dark);box-shadow:0 0 0 3px rgba(230,57,70,.28),0 0 16px rgba(230,57,70,.3);}
+.tl-date{font-family:'Orbitron',monospace;font-size:.65rem;font-weight:700;color:var(--red3);letter-spacing:1.5px;margin-bottom:7px;}
+.tl-title{font-family:'Fredoka One',cursive;font-size:clamp(1.15rem,2.5vw,1.4rem);margin-bottom:7px;}
+.tl-body{color:var(--dim);font-size:clamp(.83rem,1.2vw,.93rem);line-height:1.78;}
+
+/* ═══════════════════════════════════════
+   STORY GRID
+═══════════════════════════════════════ */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:start;}
+@media(max-width:800px){.story-grid{grid-template-columns:1fr;}}
+
+/* ═══════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:center;}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+.about-vis{
+  position:relative;height:clamp(280px,40vw,500px);border-radius:var(--radius-lg);
+  overflow:hidden;background:linear-gradient(135deg,var(--dark2),var(--dark3),var(--dark4));
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+}
+.about-blob{position:absolute;border-radius:50%;filter:blur(65px);pointer-events:none;}
+.about-logo-big{
+  font-family:'Fredoka One',cursive;font-size:clamp(3rem,7vw,5.5rem);line-height:.95;text-align:center;
+  background:linear-gradient(160deg,var(--red),var(--red2),var(--red3),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 50px rgba(230,57,70,.5));animation:floatLogo 5s ease-in-out infinite;
+  z-index:2;position:relative;
+}
+@keyframes floatLogo{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-16px) rotate(1deg);}}
+.creds{display:flex;flex-direction:column;gap:12px;margin-top:36px;}
+.cred{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--radius-sm);background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(12px);transition:border-color .3s;}
+.cred:hover{border-color:var(--border2);}
+.cred-ico{font-size:1.35rem;flex-shrink:0;}
+.cred-lbl{font-size:.72rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--dim);}
+.cred-val{font-size:.91rem;font-weight:700;color:var(--text);margin-top:2px;}
+
+/* ═══════════════════════════════════════
+   FAQ
+═══════════════════════════════════════ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:start;}
+@media(max-width:800px){.faq-grid{grid-template-columns:1fr;}}
+.faq-list{display:flex;flex-direction:column;gap:10px;}
+.faq-item{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(16px);border-radius:var(--radius-sm);overflow:hidden;transition:border-color .3s;}
+.faq-item.open{border-color:var(--border2);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;font-weight:800;font-size:clamp(.88rem,1.5vw,.98rem);transition:color .25s;width:100%;text-align:left;background:none;border:none;color:inherit;font-family:inherit;}
+.faq-q:hover{color:var(--red3);}
+.faq-icon{font-size:1.2rem;transition:transform .3s;flex-shrink:0;margin-left:14px;color:var(--red3);}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1),padding .3s;color:var(--dim);font-size:clamp(.83rem,1.2vw,.93rem);line-height:1.78;}
+.faq-a.open{max-height:260px;padding:0 24px 20px;}
+
+/* ═══════════════════════════════════════
+   JOIN BANNER
+═══════════════════════════════════════ */
+.join-banner{
+  position:relative;z-index:2;
+  margin:0 clamp(12px,4vw,48px);
+  border-radius:var(--radius-lg);overflow:hidden;
+  background:linear-gradient(135deg,#1a0208,#2d0510 30%,#1a0520 60%,#0d051a);
+  border:1px solid rgba(230,57,70,.22);
+  padding:clamp(48px,8vw,90px) clamp(24px,6vw,60px);
+  text-align:center;
+}
+.join-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(230,57,70,.12),transparent 70%);}
+.jgc{position:absolute;border-radius:50%;filter:blur(110px);pointer-events:none;}
+.join-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,5vw,4rem);margin-bottom:14px;position:relative;}
+.join-sub{color:var(--dim);font-size:clamp(.9rem,1.5vw,1.08rem);max-width:500px;margin:0 auto 40px;line-height:1.75;position:relative;}
+.join-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;}
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+footer{position:relative;z-index:2;background:rgba(8,8,16,.95);border-top:1px solid var(--border);backdrop-filter:blur(24px);padding:clamp(48px,8vw,80px) clamp(16px,5vw,48px) clamp(24px,4vw,40px);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,48px);margin-bottom:clamp(36px,5vw,60px);}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:440px){.footer-grid{grid-template-columns:1fr;}}
+.fbrand{font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,3vw,2rem);background:linear-gradient(135deg,var(--red2),var(--red3),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;}
+.fbrand-desc{color:var(--dim);font-size:clamp(.82rem,1.2vw,.9rem);line-height:1.75;max-width:260px;margin-bottom:20px;}
+.fsocial{display:flex;gap:10px;flex-wrap:wrap;}
+.soc-btn{width:38px;height:38px;border-radius:10px;background:var(--glass);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.95rem;text-decoration:none;color:var(--dim);transition:color .25s,border-color .25s,background .25s;}
+.soc-btn:hover{color:var(--text);border-color:var(--border2);background:var(--glassb);}
+.fcol-title{font-family:'Fredoka One',cursive;font-size:.95rem;margin-bottom:18px;}
+.flinks{display:flex;flex-direction:column;gap:9px;}
+.flinks a{color:var(--dim);text-decoration:none;font-size:clamp(.8rem,1.2vw,.88rem);font-weight:600;transition:color .25s;}
+.flinks a:hover{color:var(--red3);}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:28px;border-top:1px solid var(--border);font-size:clamp(.72rem,1vw,.8rem);color:var(--dim);}
+.fbadge{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:8px;background:var(--glass);border:1px solid var(--border);font-size:.75rem;font-weight:700;color:var(--dim);}
+
+/* ═══════════════════════════════════════
+   REVEAL ANIMATION
+═══════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(44px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1);}
+.reveal.in{opacity:1;transform:none;}
+.rd1{transition-delay:.07s;}.rd2{transition-delay:.14s;}.rd3{transition-delay:.21s;}
+.rd4{transition-delay:.28s;}.rd5{transition-delay:.35s;}.rd6{transition-delay:.42s;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(36px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ═══════════════════════════════════════
+   TL;DR & PARENTS SECTION
+═══════════════════════════════════════ */
+.quick-section{position:relative;z-index:2;padding:clamp(60px,10vh,100px) clamp(16px,5vw,48px);max-width:1280px;margin:0 auto;width:100%;}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,32px);}
+@media(max-width:720px){.quick-grid{grid-template-columns:1fr;}}
+
+/* TL;DR card */
+.tldr-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;}
+.tldr-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(230,57,70,.08),rgba(255,215,0,.04),transparent 60%);pointer-events:none;}
+.tldr-header{display:flex;align-items:center;gap:12px;padding:clamp(20px,3vw,28px) clamp(20px,3vw,28px) 0;}
+.tldr-badge{font-family:'Orbitron',monospace;font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;flex-shrink:0;}
+.tldr-subtitle{font-size:.78rem;font-weight:700;color:var(--dim);}
+.tldr-title{font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,3vw,2.1rem);padding:10px clamp(20px,3vw,28px) 0;}
+.tldr-list{list-style:none;display:flex;flex-direction:column;gap:0;padding:16px clamp(20px,3vw,28px) clamp(20px,3vw,28px);}
+.tldr-list li{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--border);font-size:clamp(.85rem,1.3vw,.95rem);line-height:1.55;}
+.tldr-list li:last-child{border-bottom:none;padding-bottom:0;}
+.tldr-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.tldr-text{color:var(--dim);}
+.tldr-text strong{color:var(--text);font-weight:800;}
+
+/* Parents card */
+.parents-card{border-radius:var(--radius-lg);overflow:hidden;position:relative;}
+.parents-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(30,144,255,.04),transparent 60%);pointer-events:none;}
+.parents-header{display:flex;align-items:center;gap:12px;padding:clamp(20px,3vw,28px) clamp(20px,3vw,28px) 0;}
+.parents-badge{font-family:'Orbitron',monospace;font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:linear-gradient(135deg,var(--green),#34d399);color:#fff;flex-shrink:0;}
+.parents-title{font-family:'Fredoka One',cursive;font-size:clamp(1.5rem,3vw,2.1rem);padding:10px clamp(20px,3vw,28px) 0;}
+.parents-body{padding:16px clamp(20px,3vw,28px) clamp(20px,3vw,28px);display:flex;flex-direction:column;gap:14px;}
+.p-fact{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:var(--radius-sm);background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);}
+.p-fact-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px;}
+.p-fact-title{font-size:.78rem;font-weight:900;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:3px;}
+.p-fact-body{color:var(--dim);font-size:clamp(.82rem,1.2vw,.9rem);line-height:1.65;}
+.callout{padding:clamp(20px,3vw,28px);background:var(--glass);border:1px solid var(--border);border-radius:var(--radius-sm);backdrop-filter:blur(14px);}
+.callout-title{font-family:'Fredoka One',cursive;font-size:clamp(1rem,2vw,1.18rem);margin-bottom:10px;}
+.callout-body{color:var(--dim);font-size:clamp(.82rem,1.2vw,.93rem);line-height:1.78;}
+.callout-sig{margin-top:14px;font-size:.75rem;font-weight:800;color:var(--red3);letter-spacing:1px;}
+</style>
 </head>
 <body>
 
-    <canvas id="star-canvas"></canvas>
-    <div class="bg-glow"></div>
-    <div id="cursor"></div>
-    <div id="cursor-ring"></div>
+<div id="bg"><div class="grid-overlay"></div><div class="scanline"></div></div>
+<div id="pxl"></div>
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
 
-    <div class="container">
-        <header>
-            <p style="text-transform: uppercase; letter-spacing: 6px; font-weight: 800; color: #ff8c00; font-size: 0.7rem; margin-bottom: 10px;">The Next Generation</p>
-            <h1>VIRALITY</h1>
-            <div class="social-bar" id="social-anchor"></div>
-        </header>
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#" class="nav-logo">⚡ VIRALITY GAMES</a>
+  <div class="nav-links">
+    <a href="#games">Games</a>
+    <a href="#why">Why Us</a>
+    <a href="#groups">Groups</a>
+    <a href="#story">Story</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" class="nav-cta">Join Now →</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="#games" onclick="closeNav()">🎮 Games</a>
+  <a href="#why" onclick="closeNav()">✨ Why Us</a>
+  <a href="#groups" onclick="closeNav()">🏠 Groups</a>
+  <a href="#story" onclick="closeNav()">📖 Story</a>
+  <a href="#about" onclick="closeNav()">👋 About</a>
+  <a href="#faq" onclick="closeNav()">❓ FAQ</a>
+  <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" class="mob-cta">Join Now on Roblox →</a>
+</div>
 
-        <h2 class="section-title">Experiences</h2>
-        <div class="grid" id="games-container"></div>
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-eyebrow"><span class="live-dot"></span>Official Roblox Studio · Founded 2023</div>
+  <h1 class="hero-title"><span class="w1">VIRALITY</span><span class="w2">GAMES</span></h1>
+  <p class="hero-sub">A passionate Roblox game studio born from one person's love for building worlds. From our first game in 2023 to the studio we are today — we make experiences that make you smile.</p>
+  <div class="hero-ctas">
+    <a href="#games" class="btn-primary">🎮 Explore Our Games</a>
+    <a href="#groups" class="btn-ghost">🏠 Join a Group</a>
+  </div>
+  <div class="stats-wrap">
+    <div class="stat-item"><div class="stat-num" data-target="4">0</div><div class="stat-label">Total Games</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="4">0</div><div class="stat-label">Groups</div></div>
+    <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Fun</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Free to Play</div></div>
+  </div>
+  <div class="scroll-hint">
+    <span class="scroll-label">Scroll</span>
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  </div>
+</div>
 
-        <h2 class="section-title">Marketplace</h2>
-        <div class="grid" id="store-container"></div>
+<!-- ══ MARQUEE ══ -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">🛒 Super Gaming Cart Ride <span class="msep">·</span></span>
+    <span class="marquee-item">🍕 Rainbow Pizza Obby <span class="msep">·</span></span>
+    <span class="marquee-item">⚡ Virality Games 2025 <span class="msep">·</span></span>
+    <span class="marquee-item">⭐ Virality Fan Group <span class="msep">·</span></span>
+    <span class="marquee-item">🎮 Free on Roblox <span class="msep">·</span></span>
+    <span class="marquee-item">🌱 Est. 2023 <span class="msep">·</span></span>
+    <span class="marquee-item">🏆 4 Games Made <span class="msep">·</span></span>
+    <span class="marquee-item">🛒 Super Gaming Cart Ride <span class="msep">·</span></span>
+    <span class="marquee-item">🍕 Rainbow Pizza Obby <span class="msep">·</span></span>
+    <span class="marquee-item">⚡ Virality Games 2025 <span class="msep">·</span></span>
+    <span class="marquee-item">⭐ Virality Fan Group <span class="msep">·</span></span>
+    <span class="marquee-item">🎮 Free on Roblox <span class="msep">·</span></span>
+    <span class="marquee-item">🌱 Est. 2023 <span class="msep">·</span></span>
+    <span class="marquee-item">🏆 4 Games Made <span class="msep">·</span></span>
+  </div>
+</div>
 
-        <div class="reviews-section">
-            <h2 style="font-size: 2.5rem; margin-bottom: 40px; font-weight: 800;">Community Feed</h2>
-            <div id="reviews-grid">
-                <div class="fade"></div>
-            </div>
-            <div style="text-align: center; margin-top: 60px;">
-                <button onclick="toggleReviews()" id="load-btn" class="btn btn-play" style="width: auto; padding: 22px 100px;">Explore 5,000+ Reviews</button>
-            </div>
+<!-- ══ GAMES ══ -->
+<div class="section" id="games">
+  <div class="reveal">
+    <div class="section-eyebrow">🎮 Active Games</div>
+    <h2 class="section-title">Our <span class="hi">Live Experiences</span></h2>
+    <p class="section-body">Both of our active games launched in 2026 and are completely free to play on Roblox. Every detail is handcrafted with care — no cookie-cutter content, ever.</p>
+  </div>
+
+  <!-- Super Gaming Cart Ride -->
+  <div class="gc game-big-card reveal rd1">
+    <div class="ribbon">🔥 LIVE NOW</div>
+    <div class="gv gv-cart">
+      <div class="gv-blob" style="width:300px;height:300px;background:rgba(30,144,255,.28);top:-50px;left:-50px;"></div>
+      <div class="gv-blob" style="width:200px;height:200px;background:rgba(124,58,237,.22);bottom:-30px;right:-30px;"></div>
+      <div class="game-emoji-big">🛒</div>
+    </div>
+    <div class="gi">
+      <div class="game-tag">🎢 Cart Ride · Adventure · 2026</div>
+      <div class="game-name-big">Super Gaming Cart Ride</div>
+      <p class="game-desc-big">Strap in and hold on! Super Gaming Cart Ride sends you racing through neon-lit gaming worlds, pixel art tunnels, loop-de-loops, and explosive set-pieces inspired by iconic video game universes. Launched in 2026, every track is crafted to keep your heart pounding and leave you coming back for more.</p>
+      <ul class="game-feats">
+        <li>Epic gaming-themed tracks stretching across multiple unique biomes</li>
+        <li>Dynamic lighting, particle effects, and cinematic set-pieces</li>
+        <li>Perfect solo or with the whole friend group — chaos guaranteed</li>
+        <li>Completely free to play, always — no pay-to-win, ever</li>
+      </ul>
+      <div class="game-meta-row">
+        <div class="mpill">🎮 Roblox Exclusive</div>
+        <div class="mpill">🆓 Free</div>
+        <div class="mpill">👥 All Ages</div>
+        <div class="mpill">📅 2026</div>
+      </div>
+      <a href="https://www.roblox.com/join/5nl6o" target="_blank" class="play-btn-big">▶ Play Now on Roblox</a>
+    </div>
+  </div>
+
+  <!-- Rainbow Pizza Obby -->
+  <div class="gc game-big-card reveal rd2">
+    <div class="gi" style="order:1;">
+      <div class="game-tag">🍕 Obby · Platformer · 2026</div>
+      <div class="game-name-big">Rainbow Pizza Obby</div>
+      <p class="game-desc-big">The most deliciously chaotic obstacle course on Roblox. Rainbow Pizza Obby hurls you through a psychedelic world of cascading pizza slices, rainbow bridges, bouncy cheese platforms, and sauce waterfalls you absolutely cannot fall into. Launched in 2026, with stages scaling from "yummy easy" to "impossibly spicy" — every run is a colourful new adventure.</p>
+      <ul class="game-feats">
+        <li>Dozens of uniquely themed stages, each more colourful than the last</li>
+        <li>Smart checkpoint system so you never lose too much progress</li>
+        <li>Built for casual players and hardcore obby veterans alike</li>
+        <li>Vibrant rainbow aesthetic that pops on every screen and device</li>
+      </ul>
+      <div class="game-meta-row">
+        <div class="mpill">🌈 Vibrant World</div>
+        <div class="mpill">🏁 Many Stages</div>
+        <div class="mpill">🆓 Free</div>
+        <div class="mpill">📅 2026</div>
+      </div>
+      <a href="https://www.roblox.com/join/5nl6o" target="_blank" class="play-btn-big" style="background:linear-gradient(135deg,#9333ea,#c026d3);box-shadow:0 6px 22px rgba(147,51,234,.32);">▶ Play Now on Roblox</a>
+    </div>
+    <div class="gv gv-pizza" style="order:2;">
+      <div class="gv-blob" style="width:280px;height:280px;background:rgba(147,51,234,.32);top:-40px;right:-40px;"></div>
+      <div class="gv-blob" style="width:180px;height:180px;background:rgba(230,57,70,.18);bottom:0;left:-20px;"></div>
+      <div class="game-emoji-big">🍕</div>
+    </div>
+  </div>
+
+  <!-- INACTIVE GAMES -->
+  <div class="archive-header">
+    <span class="archive-header-label">📁 Game Archive</span>
+    <div class="archive-header-line"></div>
+  </div>
+  <button class="inactive-toggle" id="inactiveToggle" onclick="toggleInactive()" aria-expanded="false">
+    <span style="font-size:1.2rem;">🗂️</span>
+    <span class="itl">Inactive &amp; Discontinued Games</span>
+    <span class="itm">2 Games · Taken Down</span>
+    <span class="itch" id="itch">▼</span>
+  </button>
+  <div class="inactive-body" id="inactiveBody">
+    <div class="inactive-grid">
+
+      <!-- Evervale RP -->
+      <div class="inactive-card">
+        <div class="inactive-thumb"><div class="inactive-emoji">🌲</div></div>
+        <div class="inactive-info">
+          <div class="inactive-tag">🏙️ Roleplay · Open World · 2023</div>
+          <div class="inactive-name">Evervale RP</div>
+          <div class="inactive-badge">⛔ Taken Down — 2026</div>
+          <p class="inactive-reason">Evervale RP was our very first game ever, created by brokenhavenofiacal in August 2023 — the title that started it all. We were incredibly proud of it. However, in 2026, a malicious virus was discovered inside the game's codebase. Rather than leave it live and risk harming our players, we made the immediate decision to take it down entirely. Player safety will always come before keeping any game online. We may revisit a clean version of Evervale in the future.</p>
         </div>
+      </div>
+
+        <!-- Bob Esponja Obby -->
+      <div class="inactive-card">
+        <div class="inactive-thumb"><div class="inactive-emoji">🧽</div></div>
+        <div class="inactive-info">
+          <div class="inactive-tag">🏁 Obby · Platformer · Nov 2025</div>
+          <div class="inactive-name">Bob Esponja Obby</div>
+          <div class="inactive-badge">⛔ Taken Down — November 2025</div>
+          <p class="inactive-reason">Bob Esponja Obby launched in November 2025 — shortly after Virality Games officially got its name. It was a fun obstacle course, but it used copyrighted characters (Bob Esponja / SpongeBob) without permission. Upon receiving a copyright concern, we took it down immediately and without hesitation. Respecting intellectual property is a core value for us, no matter how popular a game becomes.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ WHY ══ -->
+<div class="section" id="why">
+  <div class="reveal">
+    <div class="section-eyebrow">✨ Why Virality Games</div>
+    <h2 class="section-title">We're Not Like <span class="hi">Other Studios</span></h2>
+    <p class="section-body">Started by one person with a big dream, grown into a full studio. Here's what makes Virality Games different — and why players keep coming back.</p>
+  </div>
+  <div class="why-grid">
+    <div class="gc why-card c1 reveal rd1">
+      <div class="wi-icon"><div class="wi-bg"></div>❤️</div>
+      <div class="why-h">Made with Real Passion</div>
+      <p class="why-p">Started by brokenhavenofiacal as a one-person project in 2023, every title we release has been tested, broken, and replayed hundreds of times. If it doesn't feel amazing, it doesn't ship — full stop.</p>
+    </div>
+    <div class="gc why-card c2 reveal rd2">
+      <div class="wi-icon"><div class="wi-bg"></div>🆓</div>
+      <div class="why-h">Always Free to Play</div>
+      <p class="why-p">Fun should never be paywalled. All Virality Games titles are completely free on Roblox. We believe everyone deserves great experiences regardless of their budget — and we intend to keep it that way.</p>
+    </div>
+    <div class="gc why-card c3 reveal rd3">
+      <div class="wi-icon"><div class="wi-bg"></div>🎨</div>
+      <div class="why-h">Unique Visual Identity</div>
+      <p class="why-p">You can spot a Virality Games title from a mile away. We obsess over art direction, colour palettes, lighting, and effects — so every world we build feels like stepping into something genuinely special.</p>
+    </div>
+    <div class="gc why-card c4 reveal rd4">
+      <div class="wi-icon"><div class="wi-bg"></div>🏆</div>
+      <div class="why-h">Community First</div>
+      <p class="why-p">Our players shape what we build. We read every suggestion, track every bug report, and stay active across our four groups. Your voice genuinely influences every update we ship.</p>
+    </div>
+    <div class="gc why-card c5 reveal rd5">
+      <div class="wi-icon"><div class="wi-bg"></div>🚀</div>
+      <div class="why-h">We Learn Fast</div>
+      <p class="why-p">We've taken games down for viruses and copyright — twice. Each time we acted immediately to protect players and do the right thing. We learn fast, act honestly, and come back stronger.</p>
+    </div>
+    <div class="gc why-card c6 reveal rd6">
+      <div class="wi-icon"><div class="wi-bg"></div>👶</div>
+      <div class="why-h">Safe for Everyone</div>
+      <p class="why-p">Roblox is for all ages, and so are our games. We design experiences that are wholesome, safe, and welcoming — without sacrificing the challenge and excitement that keeps older players engaged too.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ GROUPS ══ -->
+<div class="section" id="groups">
+  <div class="reveal">
+    <div class="section-eyebrow">🏠 Our Community</div>
+    <h2 class="section-title">Find Your <span class="hi">Home</span></h2>
+    <p class="section-body">Virality Games isn't just a studio — it's a family. We've built four dedicated Roblox groups for every kind of fan. Join one — or all of them — and be part of something bigger than any single game.</p>
+  </div>
+  <div class="groups-grid">
+    <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" class="gc group-card reveal rd1">
+      <div class="gib gib-main">⚡</div>
+      <div class="ginfo">
+        <div class="gbadge">Official · Main Studio Group</div>
+        <div class="gname">VIRALITY GAMES</div>
+        <p class="gdesc">The official home of Virality Games on Roblox — founded in 2025 when the studio officially got its name. Stay up-to-date on all releases, announcements, dev previews, and exclusive events. The beating heart of everything we do.</p>
+        <div class="glink">Join Group <span class="garr">→</span></div>
+      </div>
+    </a>
+    <a href="https://www.roblox.com/communities/858079631/virality-fan#!/about" target="_blank" class="gc group-card reveal rd2">
+      <div class="gib gib-fan">⭐</div>
+      <div class="ginfo">
+        <div class="gbadge">Community · Fan Group</div>
+        <div class="gname">-virality fan-</div>
+        <p class="gdesc">The die-hard fan hub. Connect with fellow fans, share screenshots, trade tips, celebrate your favourite moments, and show off your Virality pride. The friendliest corner of our entire community.</p>
+        <div class="glink">Join Group <span class="garr">→</span></div>
+      </div>
+    </a>
+    <a href="https://www.roblox.com/communities/487077807/Virality-Obby#!/about" target="_blank" class="gc group-card reveal rd3">
+      <div class="gib gib-obby">🍕</div>
+      <div class="ginfo">
+        <div class="gbadge">Themed · Obby Fans</div>
+        <div class="gname">-virality obby-</div>
+        <p class="gdesc">Dedicated to all things obby! If you love Rainbow Pizza Obby and can't get enough of jumping, dodging, and conquering stages, this is where your people are. Speedruns, tips, and obby love galore.</p>
+        <div class="glink">Join Group <span class="garr">→</span></div>
+      </div>
+    </a>
+    <a href="https://www.roblox.com/communities/945214491/virality-cart-rides#!/about" target="_blank" class="gc group-card reveal rd4">
+      <div class="gib gib-cart">🛒</div>
+      <div class="ginfo">
+        <div class="gbadge">Themed · Cart Ride Fans</div>
+        <div class="gname">-virality cart rides-</div>
+        <p class="gdesc">The go-to community for Super Gaming Cart Ride fans. Share clips of your wildest rides, suggest new levels, report bugs, and connect with cart-riding fans from all over the Roblox world.</p>
+        <div class="glink">Join Group <span class="garr">→</span></div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ STORY ══ -->
+<div class="section" id="story">
+  <div class="story-grid">
+    <div class="reveal">
+      <div class="section-eyebrow">📖 Our Journey</div>
+      <h2 class="section-title">The <span class="hi">Real Story</span></h2>
+      <p class="section-body">Before there was a studio, there was one person — brokenhavenofiacal — with Roblox Studio, a lot of ambition, and zero quit in them. Here's how we went from a solo side project in 2023 to a named studio with two live games in 2026.</p>
+      <div class="callout" style="margin-top:36px;margin-bottom:16px;">
+        <div class="callout-title">🌟 Our Mission</div>
+        <p class="callout-body">"To create Roblox experiences so fun and so shareable that players can't help but spread them — bringing joy to as many people as possible, one game at a time."</p>
+        <div class="callout-sig">— brokenhavenofiacal, Founder</div>
+      </div>
+      <div class="callout">
+        <div class="callout-title">💡 Design Philosophy</div>
+        <p class="callout-body">We believe Roblox games deserve real craft: thoughtful art direction, tight gameplay, honest testing, and community listening. These aren't optional extras — they're our minimum standard for everything we ship.</p>
+      </div>
+    </div>
+    <div class="tl reveal rd1">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">AUGUST 2023 · THE BEGINNING</div>
+        <div class="tl-title">🌱 One Person, One Dream</div>
+        <p class="tl-body">brokenhavenofiacal opens Roblox Studio and builds from scratch. The very first game — Evervale RP, an open-world roleplay experience — launches in August 2023. No studio name, no team, no roadmap. Just one creator who loves Roblox and wants to make something real.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:linear-gradient(135deg,#383838,#252525);box-shadow:0 0 0 3px rgba(70,70,70,.18),0 0 8px rgba(70,70,70,.15);"></div>
+        <div class="tl-date" style="color:#484858;">2023 – 2024 · THE QUIET YEARS</div>
+        <div class="tl-title">😴 Evervale Goes Silent</div>
+        <p class="tl-body">After the initial launch buzz, Evervale RP enters a long period of inactivity through 2023 and all of 2024. The game sits dormant — no updates, no new content. brokenhavenofiacal is still around, but the project is essentially on ice. A quiet chapter, but not the end.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:linear-gradient(135deg,var(--green),#34d399);box-shadow:0 0 0 3px rgba(16,185,129,.28),0 0 16px rgba(16,185,129,.3);"></div>
+        <div class="tl-date" style="color:var(--green);">AUGUST 2025 · THE COMEBACK</div>
+        <div class="tl-title">🔄 Evervale RP Returns</div>
+        <p class="tl-body">Nearly two years after its original launch, Evervale RP comes back to life in August 2025. Updates begin rolling out, the game starts improving, and players start discovering it. Word begins to spread — slowly at first, then faster. The game that was left for dead starts going viral.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:linear-gradient(135deg,var(--gold),var(--gold2));box-shadow:0 0 0 3px rgba(255,215,0,.25),0 0 16px rgba(255,215,0,.28);"></div>
+        <div class="tl-date" style="color:var(--gold);">2025 · THE NAME</div>
+        <div class="tl-title">⚡ Virality Games is Born</div>
+        <p class="tl-body">Riding the momentum of Evervale's revival, the solo project officially becomes a named studio: Virality Games. The name captures everything — making experiences so fun they spread on their own. Four community groups launch. What started as a hobby is now something with an identity.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:linear-gradient(135deg,#444,#333);box-shadow:0 0 0 3px rgba(80,80,80,.2),0 0 10px rgba(80,80,80,.2);"></div>
+        <div class="tl-date" style="color:#555;">NOVEMBER 2025 · SETBACK</div>
+        <div class="tl-title">⚠️ Bob Esponja Obby Taken Down</div>
+        <p class="tl-body">Shortly after Virality Games is officially named, a new obby game launches — but it uses characters from copyrighted IP without permission. Upon receiving a copyright concern, it's taken down immediately. A hard lesson learned early in the studio era: no shortcuts, no borrowed characters, ever.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 0 0 3px rgba(30,144,255,.28),0 0 16px rgba(30,144,255,.3);"></div>
+        <div class="tl-date" style="color:var(--cyan);">2026 · BIG LAUNCHES</div>
+        <div class="tl-title">🛒🍕 Two Proper Games Ship</div>
+        <p class="tl-body">2026 is the year it all comes together. Super Gaming Cart Ride and Rainbow Pizza Obby both launch under the Virality Games banner — fully polished, community-ready, and built with the lessons of every game before them. Players respond enthusiastically. The studio has arrived.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:linear-gradient(135deg,#444,#333);box-shadow:0 0 0 3px rgba(80,80,80,.2),0 0 10px rgba(80,80,80,.2);"></div>
+        <div class="tl-date" style="color:#555;">2026 · SECOND SETBACK</div>
+        <div class="tl-title">⚠️ Evervale RP Taken Down</div>
+        <p class="tl-body">A malicious virus is discovered in the original Evervale RP codebase — our very first game, the one that started it all. Despite the emotional weight, it's taken down immediately to protect players. No hesitation. The door remains open for a clean rebuilt version someday.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot" style="background:linear-gradient(135deg,var(--red),var(--red3));box-shadow:0 0 0 3px rgba(230,57,70,.28),0 0 16px rgba(230,57,70,.3);"></div>
+        <div class="tl-date" style="color:var(--red3);">NOW · 2026</div>
+        <div class="tl-title">🚀 Two Live Games, Four Groups, More Coming</div>
+        <p class="tl-body">Four games made. Two still standing. Four active community groups. A studio with a real name, a real history, and a clear mission. Virality Games is still growing — and the best is absolutely still ahead.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ ABOUT ══ -->
+<div class="section" id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="about-vis">
+        <div class="about-blob" style="width:280px;height:280px;background:rgba(230,57,70,.22);top:-50px;left:-50px;"></div>
+        <div class="about-blob" style="width:230px;height:230px;background:rgba(147,51,234,.18);bottom:-30px;right:-30px;"></div>
+        <div class="about-logo-big">⚡<br>VIRALITY<br>GAMES</div>
+      </div>
+    </div>
+    <div class="reveal rd1">
+      <div class="section-eyebrow">👋 About the Studio</div>
+      <h2 class="section-title">Who We <span class="hi">Really Are</span></h2>
+      <p style="color:var(--dim);font-size:clamp(.88rem,1.4vw,.97rem);line-height:1.82;margin-bottom:16px;">Virality Games started in 2023 as one person — brokenhavenofiacal — building Roblox games as a creative outlet. Before 2025, there was no studio, no team, no name. Just someone who loved making things and kept at it through every setback.</p>
+      <p style="color:var(--dim);font-size:clamp(.88rem,1.4vw,.97rem);line-height:1.82;margin-bottom:16px;">In 2025, that solo project became Virality Games — a proper named studio with a clear mission. We've taken games down for the right reasons, learned hard lessons twice, and come out more principled and focused each time.</p>
+      <p style="color:var(--dim);font-size:clamp(.88rem,1.4vw,.97rem);line-height:1.82;margin-bottom:30px;">Today we have two live games, four active community groups, and a track record of acting with integrity — even when it's costly. That's who we are and that's not changing.</p>
+      <div class="creds">
+        <div class="cred"><span class="cred-ico">👤</span><div><div class="cred-lbl">Founder</div><div class="cred-val">brokenhavenofiacal</div></div></div>
+        <div class="cred"><span class="cred-ico">📅</span><div><div class="cred-lbl">Founded</div><div class="cred-val">2023 · Became Virality Games in 2025</div></div></div>
+        <div class="cred"><span class="cred-ico">🎮</span><div><div class="cred-lbl">Platform</div><div class="cred-val">Roblox — PC, Mobile, Console &amp; VR</div></div></div>
+        <div class="cred"><span class="cred-ico">🛠️</span><div><div class="cred-lbl">Built With</div><div class="cred-val">Roblox Studio · Luau · TextChatService</div></div></div>
+        <div class="cred"><span class="cred-ico">📍</span><div><div class="cred-lbl">Status</div><div class="cred-val">2 Games Live · 2 Archived · More in Dev</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ FAQ ══ -->
+<div class="section" id="faq">
+  <div class="faq-grid">
+    <div class="reveal">
+      <div class="section-eyebrow">❓ FAQ</div>
+      <h2 class="section-title">Got <span class="hi">Questions?</span></h2>
+      <p class="section-body">Common questions answered honestly. If yours isn't here, drop it in one of our Roblox groups — we read everything.</p>
+      <div class="callout" style="margin-top:0;">
+        <div class="callout-title">💬 Still have questions?</div>
+        <p class="callout-body" style="margin-bottom:14px;">Our main group is the best place to reach us directly. A community member or the team will usually reply fast.</p>
+        <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" style="font-size:.85rem;font-weight:800;color:var(--red3);text-decoration:none;">Ask in our Roblox group →</a>
+      </div>
+    </div>
+    <div class="faq-list reveal rd1">
+      <div class="faq-item">
+        <button class="faq-q">Are your games free to play? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes, 100%. All Virality Games titles are completely free on Roblox — no paywalled gameplay, no pay-to-win. Ever. That's a promise we intend to keep indefinitely.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Who created Virality Games? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Virality Games was founded by brokenhavenofiacal in 2023 as a solo Roblox project. The first game — Evervale RP — launched in August 2023. The studio officially got its "Virality Games" name in 2025.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Why were some games taken down? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Esponja Obby was taken down in 2025 due to a copyright concern over characters we didn't have rights to use. Evervale RP was taken down in 2026 after a malicious virus was discovered in its code. Both decisions were made immediately and without hesitation to protect players and do the right thing.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">When did the current games launch? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Both Super Gaming Cart Ride and Rainbow Pizza Obby launched in 2026 under the Virality Games name. They are our most polished titles to date and are actively maintained with updates.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How do I suggest new features or report bugs? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Join the relevant group — -virality cart rides- for the cart ride game, -virality obby- for the pizza obby. Describe your suggestion or bug in detail and we'll look into it. Many great ideas have come from the community.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will there be more games in the future? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. More games are always in development behind the scenes. We prefer to take our time and release something genuinely great rather than rush. Follow the main VIRALITY GAMES group to hear about new releases first.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Why is it called "Virality" Games? <span class="faq-icon">+</span></button>
+        <div class="faq-a">The name reflects the core mission: to make experiences so fun and shareable that they spread on their own — going viral because players genuinely love them and want their friends to play too. That's the goal with every game we make.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ══ TL;DR + PARENTS ══ -->
+<div class="quick-section" id="tldr">
+  <div class="reveal" style="text-align:center;margin-bottom:clamp(32px,5vw,52px);">
+    <div class="section-eyebrow" style="justify-content:center;">📋 Quick Read</div>
+    <h2 class="section-title">Everything You Need to Know <span class="hi">Fast</span></h2>
+    <p style="color:var(--dim);font-size:clamp(.88rem,1.4vw,1rem);max-width:500px;margin:0 auto;line-height:1.7;">Don't want to read the whole site? We've got you. Two quick summaries — one for players, one for parents.</p>
+  </div>
+  <div class="quick-grid">
+
+    <!-- TL;DR CARD -->
+    <div class="gc tldr-card reveal rd1">
+      <div class="tldr-header">
+        <div class="tldr-badge">TL;DR</div>
+        <div class="tldr-subtitle">For players who just want the facts</div>
+      </div>
+      <div class="tldr-title">Virality Games in 60 Seconds ⚡</div>
+      <ul class="tldr-list">
+        <li>
+          <span class="tldr-icon">👤</span>
+          <span class="tldr-text"><strong>Founded by one person</strong> — brokenhavenofiacal — in August 2023 as a solo Roblox project. Became "Virality Games" in 2025.</span>
+        </li>
+        <li>
+          <span class="tldr-icon">🎮</span>
+          <span class="tldr-text"><strong>2 games live right now</strong> — Super Gaming Cart Ride and Rainbow Pizza Obby, both launched in 2026. Both completely free.</span>
+        </li>
+        <li>
+          <span class="tldr-icon">🌱</span>
+          <span class="tldr-text"><strong>First game was Evervale RP</strong> (Aug 2023) — it went dormant from 2023–2024, came back in Aug 2025, went viral, then got taken down in 2026 due to a virus discovered in the code.</span>
+        </li>
+        <li>
+          <span class="tldr-icon">🧽</span>
+          <span class="tldr-text"><strong>Bob Esponja Obby</strong> launched Nov 2025, got taken down immediately after a copyright concern over the characters used.</span>
+        </li>
+        <li>
+          <span class="tldr-icon">🏠</span>
+          <span class="tldr-text"><strong>4 Roblox groups</strong> — main studio group, fan group, obby group, and cart rides group. All free to join.</span>
+        </li>
+        <li>
+          <span class="tldr-icon">🚀</span>
+          <span class="tldr-text"><strong>More games coming.</strong> We're actively developing and always listening to the community for what to build next.</span>
+        </li>
+        <li>
+          <span class="tldr-icon">❤️</span>
+          <span class="tldr-text"><strong>We've made mistakes</strong> — and always acted immediately to fix them. Player safety and doing the right thing are non-negotiable here.</span>
+        </li>
+      </ul>
     </div>
 
-    <script>
-        // --- MASTER CONFIG ---
-        const CONFIG = {
-            links: [
-                { label: "Roblox Group", url: "https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" },
-                { label: "Roblox Group 2.", url: "https://www.roblox.com/communities/487077807/Virality-Obby#!/about" },
-                { label: "Roblox Group 3.", url: "https://www.roblox.com/communities/858079631/virality-fan#!/about" },
-                { label: "Developer X", url: "https://x.com/viralpostdaily1" }
-            ],
-            games: [
-                { name: "Rainbow pizza obby", icon: "🍕", link: "https://www.roblox.com/games/139685186353982/", grad: "var(--orange-grad)", info: "This fun and colorful game is designed to help people of all ages practice hand-eye coordination, problem-solving, and patience. 🌈" },
-                { name: "evervale", icon: "🌆", link: "https://www.roblox.com/games/13419977616/Evervale-RP", grad: "var(--blue-grad)", info: "Welcome to Evervale - the coolest virtual city for gamers! 👋🌆" },
-                { name: "name", icon: "icon", link: "link", grad: "grad", info: "Description" }
-            ],
-            store: [
-                { name: "Rainbow pizza obby - Gravity coil", icon: "🍥", price: "3  Robux", link: "https://www.roblox.com/game-pass/1644092766/gravity-coil", grad: "var(--purple-grad)" },
-                { name: "game - name", icon: "icon", price: "price", link: "link", grad: "var(--orange-grad)" }
-            ],
-            players: ["Opuadm", "whyismyuser4", "BaconGamer", "PizzaFan", "Builderman", "KreekFan", "Guest404", "RobloxPlayer", "youtuber"],
-            comments: ["Insane quality.", "no lag on mobile!", "The is beautiful.", "Best obby of 2026.", "Physics are spot on."],
-            officialReplies: ["Thank you for your patronage.", "We appreciate the support.", "Duly noted. Updates incoming."],
-            userReplies: ["Agreed!", "W studio.", "Facts.", "Add me!", "Best games on roblox ever", "visit my game!",]
-        };
+    <!-- PARENTS CARD -->
+    <div class="gc parents-card reveal rd2">
+      <div class="parents-header">
+        <div class="parents-badge">👪 For Parents</div>
+      </div>
+      <div class="parents-title">Is This Safe for My Child? 🛡️</div>
+      <div class="parents-body">
+        <div class="p-fact">
+          <div class="p-fact-icon">🎮</div>
+          <div>
+            <div class="p-fact-title">What is this?</div>
+            <div class="p-fact-body">Virality Games is an independent game studio that creates free games on Roblox — a popular online gaming platform. Their games include a cart ride adventure and a colourful obstacle course. Both are simple, lighthearted experiences aimed at all ages.</div>
+          </div>
+        </div>
+        <div class="p-fact">
+          <div class="p-fact-icon">🆓</div>
+          <div>
+            <div class="p-fact-title">Does it cost money?</div>
+            <div class="p-fact-body">No. Both active games are completely free to play on Roblox. There are no purchases required to play or enjoy either game in full. Virality Games does not sell in-game items or passes.</div>
+          </div>
+        </div>
+        <div class="p-fact">
+          <div class="p-fact-icon">🛡️</div>
+          <div>
+            <div class="p-fact-title">Is the content appropriate?</div>
+            <div class="p-fact-body">Yes. All Virality Games titles are designed to be wholesome, family-friendly, and appropriate for all ages. There is no violence, mature themes, or inappropriate content. Games are played within Roblox, which has its own moderation and safety systems.</div>
+          </div>
+        </div>
+        <div class="p-fact">
+          <div class="p-fact-icon">⚠️</div>
+          <div>
+            <div class="p-fact-title">Why were some games removed?</div>
+            <div class="p-fact-body">Two games were taken down: one in 2025 due to copyrighted characters being used without permission (removed immediately upon notification), and one in 2026 after a security vulnerability was found in the code. Both were removed proactively to protect players — this shows the studio acts responsibly.</div>
+          </div>
+        </div>
+        <div class="p-fact">
+          <div class="p-fact-icon">👥</div>
+          <div>
+            <div class="p-fact-title">What are the Roblox groups?</div>
+            <div class="p-fact-body">The studio has four free Roblox community groups where fans can connect and receive updates. Groups on Roblox are moderated by Roblox itself. Joining a group does not cost anything and does not require personal information.</div>
+          </div>
+        </div>
+        <div class="p-fact">
+          <div class="p-fact-icon">📞</div>
+          <div>
+            <div class="p-fact-title">Who runs this?</div>
+            <div class="p-fact-body">Virality Games was founded by a Roblox developer known as brokenhavenofiacal in 2023. The studio is independent and operates entirely within the Roblox platform. If you have concerns, you can reach out via the main Roblox group.</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        // --- STARFIELD ENGINE ---
-        const canvas = document.getElementById('star-canvas');
-        const ctx = canvas.getContext('2d');
-        let stars = [];
+  </div>
+</div>
 
-        function initStars() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            stars = [];
-            for (let i = 0; i < 200; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 1.5,
-                    speed: Math.random() * 0.5 + 0.1
-                });
-            }
-        }
+<div class="section-divider"></div>
 
-        function drawStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#fff";
-            stars.forEach(s => {
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-                ctx.fill();
-                s.y -= s.speed;
-                if (s.y < 0) s.y = canvas.height;
-            });
-            requestAnimationFrame(drawStars);
-        }
+<!-- ══ JOIN BANNER ══ -->
+<div class="join-banner reveal">
+  <div class="jgc" style="width:380px;height:380px;background:rgba(230,57,70,.18);top:-90px;left:50%;transform:translateX(-50%);"></div>
+  <div class="join-title">Ready to Play? 🎮</div>
+  <p class="join-sub">Jump into one of our games right now on Roblox, completely free. Or join a community group and become part of the Virality Games family.</p>
+  <div class="join-btns">
+    <a href="https://www.roblox.com/join/5nl6o" target="_blank" class="btn-primary">🛒 Play Cart Ride</a>
+    <a href="https://www.roblox.com/join/5nl6o" target="_blank" class="btn-primary" style="background:linear-gradient(135deg,#9333ea,#c026d3);box-shadow:0 6px 28px rgba(147,51,234,.38);">🍕 Play Pizza Obby</a>
+    <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" class="btn-ghost">⚡ Join Main Group</a>
+  </div>
+</div>
 
-        // --- RENDER CONTENT ---
-        function render() {
-            document.getElementById('social-anchor').innerHTML = CONFIG.links.map(l => `<a href="${l.url}" class="social-link">${l.label}</a>`).join('');
-            document.getElementById('games-container').innerHTML = CONFIG.games.map(g => `
-                <div class="box">
-                    <div class="visual-preview" style="background: ${g.grad}">${g.icon}</div>
-                    <h3>${g.name}</h3>
-                    <p style="color:#666; margin-top:10px;">${g.info}</p>
-                    <a href="${g.link}" class="btn btn-play">Launch Experience</a>
-                </div>
-            `).join('');
-            document.getElementById('store-container').innerHTML = CONFIG.store.map(s => `
-                <div class="box" style="text-align: center;">
-                    <div class="visual-preview" style="background: ${s.grad}; height: 160px;">${s.icon}</div>
-                    <h3>${s.name}</h3>
-                    <p style="color:#ffb800; font-weight:800; margin-top:10px;">${s.price}</p>
-                    <a href="${s.link}" class="btn btn-store">Buy Now</a>
-                </div>
-            `).join('');
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="fbrand">⚡ VIRALITY GAMES</div>
+      <p class="fbrand-desc">An independent Roblox game studio founded in 2023 by brokenhavenofiacal. Making unforgettable, free-to-play experiences with heart, integrity, and a love for the platform.</p>
+      <div class="fsocial">
+        <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" class="soc-btn" title="Main Group">⚡</a>
+        <a href="https://www.roblox.com/communities/858079631/virality-fan#!/about" target="_blank" class="soc-btn" title="Fan Group">⭐</a>
+        <a href="https://www.roblox.com/communities/487077807/Virality-Obby#!/about" target="_blank" class="soc-btn" title="Obby Group">🍕</a>
+        <a href="https://www.roblox.com/communities/945214491/virality-cart-rides#!/about" target="_blank" class="soc-btn" title="Cart Group">🛒</a>
+      </div>
+    </div>
+    <div>
+      <div class="fcol-title">Games</div>
+      <div class="flinks">
+        <a href="https://www.roblox.com/join/5nl6o" target="_blank">Super Gaming Cart Ride</a>
+        <a href="https://www.roblox.com/join/5nl6o" target="_blank">Rainbow Pizza Obby</a>
+        <a href="#games">All Games</a>
+      </div>
+    </div>
+    <div>
+      <div class="fcol-title">Groups</div>
+      <div class="flinks">
+        <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank">VIRALITY GAMES</a>
+        <a href="https://www.roblox.com/communities/858079631/virality-fan#!/about" target="_blank">-virality fan-</a>
+        <a href="https://www.roblox.com/communities/487077807/Virality-Obby#!/about" target="_blank">-virality obby-</a>
+        <a href="https://www.roblox.com/communities/945214491/virality-cart-rides#!/about" target="_blank">-virality cart rides-</a>
+      </div>
+    </div>
+    <div>
+      <div class="fcol-title">Studio</div>
+      <div class="flinks">
+        <a href="#about">About Us</a>
+        <a href="#story">Our Story</a>
+        <a href="#why">Why Virality</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Virality Games (founded 2023 by brokenhavenofiacal). Not affiliated with Roblox Corporation.</div>
+    <div class="fbadge">🎮 Free on Roblox</div>
+  </div>
+</footer>
 
-            const grid = document.getElementById('reviews-grid');
-            let html = "";
-            for(let i=0; i<10000; i++) {
-                const user = CONFIG.players[Math.floor(Math.random()*CONFIG.players.length)] + Math.floor(Math.random()*999);
-                html += `
-                    <div class="review-card">
-                        <div class="user-info"><span>${user}</span><span>★★★★★</span></div>
-                        <p style="color:#aaa;">"${CONFIG.comments[Math.floor(Math.random()*CONFIG.comments.length)]}"</p>
-                        <div class="reply-thread">
-                            ${Math.random() > 0.4 ? `<div class="reply-item official"><b>Virality Studio</b><br><span style="color:#666;">${CONFIG.officialReplies[Math.floor(Math.random()*CONFIG.officialReplies.length)]}</span></div>` : ''}
-                            ${Math.random() > 0.7 ? `<div class="reply-item"><b>${CONFIG.players[Math.floor(Math.random()*CONFIG.players.length)]}</b><br><span style="color:#555;">${CONFIG.userReplies[Math.floor(Math.random()*CONFIG.userReplies.length)]}</span></div>` : ''}
-                        </div>
-                    </div>
-                `;
-            }
-            grid.innerHTML += html;
-        }
+<script>
+/* ── CURSOR (desktop only) ── */
+const cur=document.getElementById('cursor'),dot=document.getElementById('cursor-dot');
+let mx=0,my=0,cx=0,cy=0,cursorActive=false;
+if(window.matchMedia('(pointer:fine)').matches){
+  cursorActive=true;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function ac(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(ac);})();
+  document.querySelectorAll('a,button,.gc').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cx'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cx'));
+  });
+}
 
-        // --- CURSOR ---
-        const c = document.getElementById('cursor'), r = document.getElementById('cursor-ring');
-        let mx = 0, my = 0, cx = 0, cy = 0, rx = 0, ry = 0;
-        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-        function animateCursor() {
-            cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2;
-            rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
-            c.style.transform = `translate(${cx}px, ${cy}px)`;
-            r.style.transform = `translate(${rx - 20}px, ${ry - 20}px)`;
-            requestAnimationFrame(animateCursor);
-        }
+/* ── MOBILE NAV ── */
+const burger=document.getElementById('navBurger');
+const navMob=document.getElementById('navMobile');
+let navOpen=false;
+burger.addEventListener('click',()=>{
+  navOpen=!navOpen;
+  navMob.classList.toggle('open',navOpen);
+  const spans=burger.querySelectorAll('span');
+  if(navOpen){spans[0].style.transform='rotate(45deg) translate(5px,5px)';spans[1].style.opacity='0';spans[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
+  else{spans.forEach(s=>{s.style.transform='';s.style.opacity='';});}
+});
+function closeNav(){navOpen=false;navMob.classList.remove('open');burger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}
 
-        function toggleReviews() {
-            const g = document.getElementById('reviews-grid');
-            g.classList.toggle('open');
-            document.getElementById('load-btn').innerText = g.classList.contains('open') ? "Collapse Log" : "Explore 5,000+ Reviews";
-            document.querySelector('.fade').style.display = g.classList.contains('open') ? 'none' : 'block';
-        }
+/* ── BG ORBS ── */
+const bg=document.getElementById('bg');
+[
+  {w:700,h:700,x:'5%',y:'-10%',c:'rgba(230,57,70,.16)',dx:'55px',dy:'75px',dur:'22s',del:'0s'},
+  {w:600,h:600,x:'70%',y:'60%',c:'rgba(124,58,237,.12)',dx:'-75px',dy:'-55px',dur:'28s',del:'-8s'},
+  {w:500,h:500,x:'30%',y:'70%',c:'rgba(30,144,255,.09)',dx:'90px',dy:'-40px',dur:'18s',del:'-4s'},
+  {w:400,h:400,x:'85%',y:'5%',c:'rgba(255,215,0,.06)',dx:'-45px',dy:'65px',dur:'32s',del:'-12s'},
+  {w:350,h:350,x:'50%',y:'30%',c:'rgba(16,185,129,.06)',dx:'-65px',dy:'-85px',dur:'24s',del:'-6s'},
+].forEach(o=>{
+  const d=document.createElement('div');d.className='bg-orb';
+  Object.assign(d.style,{width:o.w+'px',height:o.h+'px',left:o.x,top:o.y,background:o.c,'--dx':o.dx,'--dy':o.dy,animationDuration:o.dur,animationDelay:o.del});
+  bg.appendChild(d);
+});
 
-        window.onload = () => { initStars(); drawStars(); render(); animateCursor(); };
-        window.onresize = initStars;
-    </script>
+/* ── FLOATING PIXELS ── */
+const pxl=document.getElementById('pxl');
+const cols=['#e63946','#ff6b6b','#ff8a93','#9333ea','#1e90ff','#00d4ff','#ffd700','#10b981','#f97316'];
+/* fewer on mobile for perf */
+const count=window.innerWidth<600?16:36;
+for(let i=0;i<count;i++){
+  const p=document.createElement('div');p.className='pixel';
+  const sz=2+Math.random()*7;
+  Object.assign(p.style,{width:sz+'px',height:sz+'px',left:(Math.random()*100)+'vw',background:cols[Math.floor(Math.random()*cols.length)],borderRadius:Math.random()>.5?'50%':'2px',animationDuration:(10+Math.random()*18)+'s',animationDelay:(Math.random()*18)+'s'});
+  pxl.appendChild(p);
+}
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── CARD TILT (desktop only) ── */
+if(cursorActive){
+  document.querySelectorAll('.game-big-card,.gc.why-card,.gc.group-card').forEach(c=>{
+    c.addEventListener('mousemove',e=>{
+      const r=c.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      c.style.transform=`translateY(-8px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
+      c.style.transformStyle='preserve-3d';
+    });
+    c.addEventListener('mouseleave',()=>{c.style.transform='';});
+  });
+}
+
+/* ── FAQ ACCORDION ── */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.closest('.faq-item'),ans=item.querySelector('.faq-a'),isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').classList.remove('open');});
+    if(!isOpen){item.classList.add('open');ans.classList.add('open');}
+  });
+});
+
+/* ── INACTIVE TOGGLE ── */
+function toggleInactive(){
+  const body=document.getElementById('inactiveBody');
+  const toggle=document.getElementById('inactiveToggle');
+  const itch=document.getElementById('itch');
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  toggle.classList.toggle('inactive-open',!isOpen);
+  toggle.setAttribute('aria-expanded',String(!isOpen));
+}
+
+/* ── COUNTER ANIMATION ── */
+function animCount(el,target){
+  const start=performance.now();
+  (function step(now){
+    const p=Math.min((now-start)/1600,1),e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(e*target);
+    if(p<1)requestAnimationFrame(step);else el.textContent=target+'+';
+  })(start);
+}
+const cobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting&&e.target.dataset.target){animCount(e.target,+e.target.dataset.target);cobs.unobserve(e.target);}});
+},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>cobs.observe(el));
+
+/* ── NAV ACTIVE HIGHLIGHT ── */
+const secs=[...document.querySelectorAll('[id]')];
+const nls=[...document.querySelectorAll('.nav-links a')];
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
+  nls.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--red3)':'';});
+},{passive:true});
+</script>
 </body>
 </html>
