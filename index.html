@@ -512,6 +512,52 @@ footer{position:relative;z-index:2;background:rgba(8,8,16,.95);border-top:1px so
 .callout-title{font-family:'Fredoka One',cursive;font-size:clamp(1rem,2vw,1.18rem);margin-bottom:10px;}
 .callout-body{color:var(--dim);font-size:clamp(.82rem,1.2vw,.93rem);line-height:1.78;}
 .callout-sig{margin-top:14px;font-size:.75rem;font-weight:800;color:var(--red3);letter-spacing:1px;}
+
+/* ═══════════════════════════════════════
+   SCROLL PROGRESS BAR
+═══════════════════════════════════════ */
+#progress-bar{position:fixed;top:0;left:0;z-index:9998;height:3px;width:0%;background:linear-gradient(90deg,var(--red),var(--red2),var(--gold));box-shadow:0 0 10px rgba(230,57,70,.6);border-radius:0 3px 3px 0;pointer-events:none;}
+
+/* ═══════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════ */
+#back-top{position:fixed;bottom:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);z-index:400;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--red2));border:none;color:#fff;font-size:1.1rem;box-shadow:0 6px 22px rgba(230,57,70,.45);cursor:pointer;opacity:0;pointer-events:none;transform:translateY(16px) scale(.85);transition:opacity .3s,transform .3s;display:flex;align-items:center;justify-content:center;}
+#back-top.show{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);}
+@media(pointer:fine){#back-top:hover{transform:translateY(-3px) scale(1.08)!important;box-shadow:0 10px 30px rgba(230,57,70,.6);}}
+
+/* ═══════════════════════════════════════
+   STICKY PLAY CTA
+═══════════════════════════════════════ */
+#sticky-cta{position:fixed;bottom:clamp(16px,3vw,28px);left:50%;transform:translateX(-50%) translateY(80px);z-index:399;display:flex;gap:10px;align-items:center;padding:10px 20px 10px 14px;border-radius:999px;background:rgba(8,8,16,.92);border:1px solid var(--border2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 0 1px rgba(230,57,70,.15);opacity:0;pointer-events:none;transition:opacity .4s cubic-bezier(.16,1,.3,1),transform .4s cubic-bezier(.16,1,.3,1);white-space:nowrap;}
+#sticky-cta.show{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
+.scta-label{font-size:.72rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-right:4px;}
+.scta-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:999px;font-family:'Nunito',sans-serif;font-weight:900;font-size:.82rem;text-decoration:none;color:#fff;transition:transform .2s,box-shadow .2s;}
+.scta-btn:hover{transform:scale(1.05);}
+.scta-btn-cart{background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 4px 14px rgba(30,144,255,.4);}
+.scta-btn-pizza{background:linear-gradient(135deg,var(--purple),#c026d3);box-shadow:0 4px 14px rgba(147,51,234,.4);}
+.scta-close{background:none;border:none;color:var(--dim);font-size:1rem;padding:4px 6px;margin-left:2px;border-radius:6px;cursor:pointer;transition:color .2s;}
+.scta-close:hover{color:var(--text);}
+@media(max-width:520px){#sticky-cta{padding:8px 12px;gap:7px;}.scta-btn{padding:7px 12px;font-size:.74rem;}.scta-label{display:none;}}
+
+/* ═══════════════════════════════════════
+   SHARE BUTTONS
+═══════════════════════════════════════ */
+.share-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+.share-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:10px;background:var(--glass);border:1px solid var(--border);font-family:'Nunito',sans-serif;font-weight:800;font-size:.8rem;color:var(--dim);cursor:pointer;transition:all .22s;position:relative;overflow:hidden;}
+.share-btn:hover{background:var(--glassb);border-color:var(--border2);color:var(--text);}
+.share-btn .copied-flash{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--green);color:#fff;font-weight:900;font-size:.78rem;opacity:0;transition:opacity .2s;border-radius:10px;}
+.share-btn.flash .copied-flash{opacity:1;}
+
+/* ═══════════════════════════════════════
+   KONAMI EASTER EGG
+═══════════════════════════════════════ */
+#konami-overlay{position:fixed;inset:0;z-index:9990;display:flex;align-items:center;justify-content:center;background:rgba(8,8,16,.97);backdrop-filter:blur(20px);opacity:0;pointer-events:none;transition:opacity .4s;flex-direction:column;gap:16px;text-align:center;padding:24px;}
+#konami-overlay.show{opacity:1;pointer-events:auto;}
+.konami-emoji{font-size:5rem;animation:konamiBounce .6s ease-in-out infinite alternate;}
+@keyframes konamiBounce{from{transform:scale(1);}to{transform:scale(1.15) rotate(5deg);}}
+.konami-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,6vw,3.5rem);background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.konami-sub{color:var(--dim);font-size:1rem;max-width:420px;line-height:1.7;}
+.konami-close{margin-top:12px;padding:12px 28px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:.95rem;border:none;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -520,6 +566,28 @@ footer{position:relative;z-index:2;background:rgba(8,8,16,.95);border-top:1px so
 <div id="pxl"></div>
 <div id="cursor"></div>
 <div id="cursor-dot"></div>
+
+<!-- ══ PROGRESS BAR ══ -->
+<div id="progress-bar"></div>
+
+<!-- ══ BACK TO TOP ══ -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- ══ STICKY PLAY CTA ══ -->
+<div id="sticky-cta">
+  <span class="scta-label">Play Now</span>
+  <a href="https://www.roblox.com/join/97xdw" target="_blank" class="scta-btn scta-btn-cart">🛒 Cart Ride</a>
+  <a href="https://www.roblox.com/join/97xdw" target="_blank" class="scta-btn scta-btn-pizza">🍕 Pizza Obby</a>
+  <button class="scta-close" onclick="document.getElementById('sticky-cta').classList.remove('show');document.getElementById('sticky-cta').style.display='none';" aria-label="Close">✕</button>
+</div>
+
+<!-- ══ KONAMI EASTER EGG ══ -->
+<div id="konami-overlay">
+  <div class="konami-emoji">⚡</div>
+  <div class="konami-title">You Found the Secret!</div>
+  <p class="konami-sub">↑ ↑ ↓ ↓ ← → ← → B A — the classic Konami Code. You're clearly a real gamer. brokenhavenofiacal would be proud. 🎮</p>
+  <button class="konami-close" onclick="document.getElementById('konami-overlay').classList.remove('show')">Close</button>
+</div>
 
 <!-- ══ NAV ══ -->
 <nav>
@@ -557,6 +625,13 @@ footer{position:relative;z-index:2;background:rgba(8,8,16,.95);border-top:1px so
   <div class="hero-ctas">
     <a href="#games" class="btn-primary">🎮 Explore Our Games</a>
     <a href="#groups" class="btn-ghost">🏠 Join a Group</a>
+  </div>
+  <div class="share-row" style="justify-content:center;margin-top:20px;animation:fadeUp .9s .65s cubic-bezier(.16,1,.3,1) both;">
+    <button class="share-btn" onclick="shareOrCopy()">
+      🔗 Share Site
+      <span class="copied-flash">✓ Copied!</span>
+    </button>
+    <a href="updates.html" class="share-btn" style="text-decoration:none;">📣 Latest Updates</a>
   </div>
   <div class="stats-wrap">
     <div class="stat-item"><div class="stat-num" data-target="4">0</div><div class="stat-label">Total Games</div></div>
@@ -1222,6 +1297,58 @@ window.addEventListener('scroll',()=>{
   secs.forEach(s=>{if(window.scrollY>=s.offsetTop-100)cur=s.id;});
   nls.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--red3)':'';});
 },{passive:true});
+
+/* ── SCROLL PROGRESS BAR ── */
+const progressBar=document.getElementById('progress-bar');
+window.addEventListener('scroll',()=>{
+  const doc=document.documentElement;
+  const pct=(doc.scrollTop/(doc.scrollHeight-doc.clientHeight))*100;
+  progressBar.style.width=pct+'%';
+},{passive:true});
+
+/* ── BACK TO TOP ── */
+const backTop=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{
+  backTop.classList.toggle('show',window.scrollY>400);
+},{passive:true});
+
+/* ── STICKY PLAY CTA (shows after scrolling past hero) ── */
+const stickyCta=document.getElementById('sticky-cta');
+let stickyDismissed=false;
+const heroEl=document.querySelector('.hero');
+const heroObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!stickyDismissed) stickyCta.classList.toggle('show',!e.isIntersecting);
+  });
+},{threshold:0.1});
+if(heroEl) heroObs.observe(heroEl);
+
+/* ── SHARE / COPY LINK ── */
+function shareOrCopy(){
+  const btn=event.currentTarget;
+  const url='https://virality-games.github.io/';
+  if(navigator.share){
+    navigator.share({title:'Virality Games',text:'Check out Virality Games — free Roblox games!',url}).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(url).then(()=>{
+      btn.classList.add('flash');
+      setTimeout(()=>btn.classList.remove('flash'),1600);
+    }).catch(()=>{});
+  }
+}
+
+/* ── KONAMI CODE EASTER EGG ── */
+const konamiSeq=[38,38,40,40,37,39,37,39,66,65];
+let konamiPos=0;
+document.addEventListener('keydown',e=>{
+  if(e.keyCode===konamiSeq[konamiPos]){
+    konamiPos++;
+    if(konamiPos===konamiSeq.length){
+      document.getElementById('konami-overlay').classList.add('show');
+      konamiPos=0;
+    }
+  } else { konamiPos=0; }
+});
 </script>
 </body>
 </html>
