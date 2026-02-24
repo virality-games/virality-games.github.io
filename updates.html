@@ -267,6 +267,44 @@ nav {
   GISCUS THEME OVERRIDE
 ════════════════════════════════════════ */
 .giscus { margin-top:8px; }
+
+/* ════════════════════════════════════════
+  PROGRESS BAR
+════════════════════════════════════════ */
+#progress-bar{position:fixed;top:0;left:0;z-index:9998;height:3px;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--gold));box-shadow:0 0 10px rgba(230,57,70,.6);border-radius:0 3px 3px 0;pointer-events:none;}
+
+/* ════════════════════════════════════════
+  BACK TO TOP
+════════════════════════════════════════ */
+#back-top{position:fixed;bottom:clamp(16px,3vw,28px);right:clamp(16px,3vw,28px);z-index:400;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-size:1.1rem;box-shadow:0 6px 22px rgba(230,57,70,.45);cursor:pointer;opacity:0;pointer-events:none;transform:translateY(16px) scale(.85);transition:opacity .3s,transform .3s;display:flex;align-items:center;justify-content:center;}
+#back-top.show{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);}
+#back-top:hover{transform:translateY(-3px) scale(1.08)!important;}
+
+/* ════════════════════════════════════════
+  SEARCH BAR
+════════════════════════════════════════ */
+.search-wrap{position:relative;margin-bottom:0;}
+.search-input{width:100%;padding:11px 18px 11px 42px;border-radius:var(--radius-sm);background:var(--glass);border:1px solid var(--border);color:var(--text);font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:600;outline:none;transition:border-color .25s,background .25s;}
+.search-input::placeholder{color:var(--dim);}
+.search-input:focus{border-color:var(--border2);background:var(--glassb);}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:.95rem;pointer-events:none;color:var(--dim);}
+.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--dim);font-size:1rem;cursor:pointer;padding:3px;display:none;}
+.search-clear.show{display:block;}
+
+/* ════════════════════════════════════════
+  READING TIME + COPY LINK on cards
+════════════════════════════════════════ */
+.update-meta-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);}
+.read-time{display:flex;align-items:center;gap:6px;font-size:.75rem;font-weight:700;color:var(--dim);}
+.copy-post-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;background:var(--glass);border:1px solid var(--border);font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:800;color:var(--dim);cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.copy-post-btn:hover{background:var(--glassb);border-color:var(--border2);color:var(--text);}
+.copy-post-btn .cp-flash{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--green);color:#fff;font-weight:900;font-size:.74rem;opacity:0;transition:opacity .2s;border-radius:8px;}
+.copy-post-btn.flashing .cp-flash{opacity:1;}
+
+/* no results */
+.no-results{text-align:center;padding:60px 24px;color:var(--dim);}
+.no-results-emoji{font-size:3rem;margin-bottom:12px;}
+.no-results-title{font-family:'Fredoka One',cursive;font-size:1.5rem;color:var(--dim);}
 </style>
 </head>
 <body>
@@ -275,6 +313,8 @@ nav {
 <div id="pxl"></div>
 <div id="cursor"></div>
 <div id="cursor-dot"></div>
+<div id="progress-bar"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <!-- ════════════════════════════════════════
   NAV
@@ -329,6 +369,12 @@ nav {
     <button class="filter-btn" data-filter="devlog">🟠 Dev Log</button>
     <button class="filter-btn" data-filter="notice">🟡 Notice</button>
   </div>
+  <div class="search-wrap" style="max-width:480px;margin-top:16px;">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search posts by title or content…" autocomplete="off">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()" aria-label="Clear search">✕</button>
+  </div>
+  <div id="postCountBadge" style="margin-top:12px;font-size:.75rem;font-weight:700;color:var(--dim);"></div>
 </div>
 
 <!-- ════════════════════════════════════════
@@ -389,6 +435,10 @@ nav {
           </div>
           <p>We've been working on this for a while and we're excited to finally get it into your hands. Leave a reaction below and let us know what you think!</p>
           <a href="https://www.roblox.com/join/97xdw" target="_blank" class="btn">▶ Play Now on Roblox</a>
+          <div class="update-meta-bottom">
+            <span class="read-time" id="rt-post-001">⏱ calculating…</span>
+            <button class="copy-post-btn" onclick="copyPostLink('post-001',this)">🔗 Copy link<span class="cp-flash">✓ Copied!</span></button>
+          </div>
         </div>
       </div>
       <div class="update-comments">
@@ -428,6 +478,10 @@ nav {
             <span class="note-icon">💡</span>
             <span>Have ideas for stages or mechanics? Drop them in the comments — we actually read everything!</span>
           </div>
+          <div class="update-meta-bottom">
+            <span class="read-time" id="rt-post-002">⏱ calculating…</span>
+            <button class="copy-post-btn" onclick="copyPostLink('post-002',this)">🔗 Copy link<span class="cp-flash">✓ Copied!</span></button>
+          </div>
         </div>
       </div>
       <div class="update-comments">
@@ -455,6 +509,10 @@ nav {
             <span>We take intellectual property rights seriously. No game is worth keeping up if it uses characters or content we don't have rights to. This was the right call, full stop.</span>
           </div>
           <p>We apologise to anyone who enjoyed the game. We're committed to only building original experiences — or ones we have explicit permission to create — going forward. The lessons learned here directly shaped how we approach development today.</p>
+          <div class="update-meta-bottom">
+            <span class="read-time" id="rt-post-003">⏱ calculating…</span>
+            <button class="copy-post-btn" onclick="copyPostLink('post-003',this)">🔗 Copy link<span class="cp-flash">✓ Copied!</span></button>
+          </div>
         </div>
       </div>
       <div class="update-comments">
@@ -502,82 +560,50 @@ nav {
 
 <script>
 /* ════════════════════════════════════════
-  GISCUS CONFIG
-  🔧 Only change these if your repo/IDs change
+  GISCUS CONFIG — only edit if IDs change
 ════════════════════════════════════════ */
 const GISCUS_CONFIG = {
-  repo:         'virality-games/virality-games.github.io',
-  repoId:       'R_kgDOQ359jQ',
-  category:     'Updates',
-  categoryId:   'DIC_kwDOQ359jc4C3IMU',
-  theme:        'catppuccin_mocha',
-  lang:         'en',
+  repo:       'virality-games/virality-games.github.io',
+  repoId:     'R_kgDOQ359jQ',
+  category:   'Updates',
+  categoryId: 'DIC_kwDOQ359jc4C3IMU',
+  theme:      'catppuccin_mocha',
+  lang:       'en',
 };
 
-/* ────────────────────────────────────────
-  Multi-widget Giscus loader.
-  Creates a real iframe per .giscus-widget
-  using IntersectionObserver so they only
-  load when scrolled into view (lazy).
-────────────────────────────────────────── */
+/* ── GISCUS: load one iframe per widget ── */
 function loadGiscusWidget(container) {
   if (container.dataset.loaded) return;
   container.dataset.loaded = 'true';
-
-  const term = container.dataset.term;
-  const iframe = document.createElement('iframe');
-
   const params = new URLSearchParams({
-    origin:         window.location.origin,
-    session:        '',
-    theme:          GISCUS_CONFIG.theme,
-    reactionsEnabled: '1',
-    emitMetadata:   '0',
-    inputPosition:  'top',
-    repo:           GISCUS_CONFIG.repo,
-    repoId:         GISCUS_CONFIG.repoId,
-    category:       GISCUS_CONFIG.category,
-    categoryId:     GISCUS_CONFIG.categoryId,
-    mapping:        'specific',
-    term:           term,
-    strict:         '0',
-    lang:           GISCUS_CONFIG.lang,
-    loading:        'eager',
+    origin: window.location.origin, session: '',
+    theme: GISCUS_CONFIG.theme, reactionsEnabled: '1',
+    emitMetadata: '0', inputPosition: 'top',
+    repo: GISCUS_CONFIG.repo, repoId: GISCUS_CONFIG.repoId,
+    category: GISCUS_CONFIG.category, categoryId: GISCUS_CONFIG.categoryId,
+    mapping: 'specific', term: container.dataset.term,
+    strict: '0', lang: GISCUS_CONFIG.lang, loading: 'eager',
   });
-
-  iframe.src        = 'https://giscus.app/widget?' + params.toString();
-  iframe.title      = 'Comments';
-  iframe.loading    = 'lazy';
-  iframe.style.cssText = 'width:100%;border:none;min-height:200px;color-scheme:dark;';
-  iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
-
-  /* listen for resize messages from the giscus iframe */
-  window.addEventListener('message', (event) => {
-    if (event.origin !== 'https://giscus.app') return;
-    if (typeof event.data !== 'object' || !event.data.giscus) return;
-    const msg = event.data.giscus;
-    if (msg.resizeHeight && iframe.contentWindow === event.source) {
-      iframe.style.height = msg.resizeHeight + 'px';
-    }
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://giscus.app/widget?' + params.toString();
+  iframe.title = 'Comments'; iframe.loading = 'lazy';
+  iframe.style.cssText = 'width:100%;border:none;min-height:220px;color-scheme:dark;transition:height .3s;';
+  iframe.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-forms');
+  window.addEventListener('message', ev => {
+    if (ev.origin !== 'https://giscus.app') return;
+    if (typeof ev.data !== 'object' || !ev.data.giscus) return;
+    if (ev.data.giscus.resizeHeight && iframe.contentWindow === ev.source)
+      iframe.style.height = ev.data.giscus.resizeHeight + 'px';
   });
-
   container.appendChild(iframe);
 }
-
-/* Lazy-load each widget when it enters the viewport */
-const widgetObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      loadGiscusWidget(e.target);
-      widgetObs.unobserve(e.target);
-    }
-  });
+const widgetObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { loadGiscusWidget(e.target); widgetObs.unobserve(e.target); } });
 }, { rootMargin: '200px 0px' });
-
 document.querySelectorAll('.giscus-widget').forEach(w => widgetObs.observe(w));
 
 /* ── CURSOR ── */
-const cur=document.getElementById('cursor'),dot=document.getElementById('cursor-dot');
+const cur=document.getElementById('cursor'), dot=document.getElementById('cursor-dot');
 let mx=0,my=0,cx=0,cy=0,cursorActive=false;
 if(window.matchMedia('(pointer:fine)').matches){
   cursorActive=true;
@@ -590,24 +616,32 @@ if(window.matchMedia('(pointer:fine)').matches){
 }
 
 /* ── MOBILE NAV ── */
-const burger=document.getElementById('navBurger');
-const navMob=document.getElementById('navMobile');
+const burger=document.getElementById('navBurger'), navMob=document.getElementById('navMobile');
 let navOpen=false;
 burger.addEventListener('click',()=>{
-  navOpen=!navOpen;
-  navMob.classList.toggle('open',navOpen);
-  const spans=burger.querySelectorAll('span');
-  if(navOpen){spans[0].style.transform='rotate(45deg) translate(5px,5px)';spans[1].style.opacity='0';spans[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
-  else{spans.forEach(s=>{s.style.transform='';s.style.opacity='';});}
+  navOpen=!navOpen; navMob.classList.toggle('open',navOpen);
+  const sp=burger.querySelectorAll('span');
+  if(navOpen){sp[0].style.transform='rotate(45deg) translate(5px,5px)';sp[1].style.opacity='0';sp[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
+  else sp.forEach(s=>{s.style.transform='';s.style.opacity='';});
 });
 function closeNav(){navOpen=false;navMob.classList.remove('open');burger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}
 
+/* ── SCROLL PROGRESS BAR ── */
+const progressBar = document.getElementById('progress-bar');
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  progressBar.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+},{passive:true});
+
+/* ── BACK TO TOP ── */
+const backTop=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{ backTop.classList.toggle('show',window.scrollY>400); },{passive:true});
+
 /* ── BG ORBS ── */
 const bg=document.getElementById('bg');
-[
-  {w:600,h:600,x:'5%',y:'-15%',c:'rgba(230,57,70,.14)',dx:'50px',dy:'70px',dur:'22s',del:'0s'},
-  {w:500,h:500,x:'75%',y:'55%',c:'rgba(124,58,237,.1)',dx:'-70px',dy:'-50px',dur:'28s',del:'-8s'},
-  {w:400,h:400,x:'40%',y:'65%',c:'rgba(30,144,255,.08)',dx:'80px',dy:'-35px',dur:'18s',del:'-4s'},
+[{w:600,h:600,x:'5%',y:'-15%',c:'rgba(230,57,70,.14)',dx:'50px',dy:'70px',dur:'22s',del:'0s'},
+ {w:500,h:500,x:'75%',y:'55%',c:'rgba(124,58,237,.1)',dx:'-70px',dy:'-50px',dur:'28s',del:'-8s'},
+ {w:400,h:400,x:'40%',y:'65%',c:'rgba(30,144,255,.08)',dx:'80px',dy:'-35px',dur:'18s',del:'-4s'},
 ].forEach(o=>{
   const d=document.createElement('div');d.className='bg-orb';
   Object.assign(d.style,{width:o.w+'px',height:o.h+'px',left:o.x,top:o.y,background:o.c,'--dx':o.dx,'--dy':o.dy,animationDuration:o.dur,animationDelay:o.del});
@@ -616,12 +650,12 @@ const bg=document.getElementById('bg');
 
 /* ── PIXELS ── */
 const pxl=document.getElementById('pxl');
-const cols=['#e63946','#ff6b6b','#9333ea','#1e90ff','#ffd700','#10b981'];
+const pcols=['#e63946','#ff6b6b','#9333ea','#1e90ff','#ffd700','#10b981'];
 const cnt=window.innerWidth<600?10:22;
 for(let i=0;i<cnt;i++){
   const p=document.createElement('div');p.className='pixel';
   const sz=2+Math.random()*6;
-  Object.assign(p.style,{width:sz+'px',height:sz+'px',left:(Math.random()*100)+'vw',background:cols[Math.floor(Math.random()*cols.length)],borderRadius:Math.random()>.5?'50%':'2px',animationDuration:(12+Math.random()*16)+'s',animationDelay:(Math.random()*16)+'s'});
+  Object.assign(p.style,{width:sz+'px',height:sz+'px',left:(Math.random()*100)+'vw',background:pcols[Math.floor(Math.random()*pcols.length)],borderRadius:Math.random()>.5?'50%':'2px',animationDuration:(12+Math.random()*16)+'s',animationDelay:(Math.random()*16)+'s'});
   pxl.appendChild(p);
 }
 
@@ -631,56 +665,135 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:.06,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* ── SIDEBAR AUTO-BUILD ── */
+/* ── READING TIME ── */
+function calcReadTime(el){
+  const words=(el.textContent||'').trim().split(/\s+/).filter(Boolean).length;
+  const mins=Math.max(1,Math.round(words/200));
+  return `⏱ ${mins} min read`;
+}
+
+/* ── CARDS SETUP: sidebar, reading time, post count ── */
 const cards=[...document.querySelectorAll('.update-card[id]')];
 const sidebarLinks=document.getElementById('sidebarLinks');
+
 cards.forEach(card=>{
+  /* reading time */
+  const body=card.querySelector('.update-body');
+  const rtEl=document.getElementById('rt-'+card.id);
+  if(body && rtEl) rtEl.textContent=calcReadTime(body);
+
+  /* sidebar entry */
   const title=card.querySelector('.update-title');
   const date=card.querySelector('.update-date');
-  if(!title)return;
+  if(!title) return;
   const a=document.createElement('a');
-  a.className='sidebar-link';
-  a.href='#'+card.id;
-  a.textContent=(date?date.textContent+' — ':'')+title.textContent.slice(0,28)+(title.textContent.length>28?'…':'');
+  a.className='sidebar-link'; a.href='#'+card.id;
+  a.innerHTML=`<span style="font-size:.6rem;color:var(--dim);display:block;margin-bottom:1px;">${date?date.textContent:''}</span>${title.textContent.slice(0,32)+(title.textContent.length>32?'…':'')}`;
   sidebarLinks.appendChild(a);
 });
+
+/* post count badge */
+const badge=document.getElementById('postCountBadge');
+if(badge) badge.textContent=`${cards.length} post${cards.length!==1?'s':''} published`;
+
+/* sidebar active highlight on scroll */
 const sideObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       document.querySelectorAll('.sidebar-link').forEach(l=>l.classList.remove('active-link'));
-      const activeLink=sidebarLinks.querySelector(`a[href="#${e.target.id}"]`);
-      if(activeLink)activeLink.classList.add('active-link');
+      const al=sidebarLinks.querySelector(`a[href="#${e.target.id}"]`);
+      if(al) al.classList.add('active-link');
     }
   });
-},{threshold:.4,rootMargin:'-80px 0px -40% 0px'});
+},{threshold:.3,rootMargin:'-80px 0px -40% 0px'});
 cards.forEach(c=>sideObs.observe(c));
 
-/* ── TAG FILTERING ── */
+/* ── COPY POST LINK ── */
+function copyPostLink(postId, btn){
+  const url=`https://virality-games.github.io/updates.html#${postId}`;
+  navigator.clipboard.writeText(url).then(()=>{
+    btn.classList.add('flashing');
+    setTimeout(()=>btn.classList.remove('flashing'),1600);
+  }).catch(()=>{ prompt('Copy this link:',url); });
+}
+
+/* ── SEARCH ── */
+const searchInput=document.getElementById('searchInput');
+const searchClear=document.getElementById('searchClear');
+let activeFilter='all';
+
+function runSearch(){
+  const q=searchInput.value.trim().toLowerCase();
+  searchClear.classList.toggle('show', q.length>0);
+  let visible=0;
+  cards.forEach(card=>{
+    const matchFilter=activeFilter==='all'||card.dataset.filter===activeFilter;
+    const title=(card.querySelector('.update-title')||{}).textContent||'';
+    const body=(card.querySelector('.update-body')||{}).textContent||'';
+    const matchSearch=!q||title.toLowerCase().includes(q)||body.toLowerCase().includes(q);
+    const show=matchFilter&&matchSearch;
+    card.style.display=show?'':'none';
+    if(show) visible++;
+  });
+  /* highlight search terms */
+  if(q){
+    cards.forEach(card=>{
+      if(card.style.display==='none') return;
+      const titleEl=card.querySelector('.update-title');
+      if(!titleEl) return;
+      const raw=titleEl.dataset.raw||titleEl.textContent;
+      titleEl.dataset.raw=raw;
+      const re=new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+      titleEl.innerHTML=raw.replace(re,'<mark style="background:rgba(255,215,0,.3);color:var(--gold);border-radius:3px;padding:0 2px;">$1</mark>');
+    });
+  } else {
+    cards.forEach(card=>{
+      const titleEl=card.querySelector('.update-title');
+      if(titleEl&&titleEl.dataset.raw) titleEl.textContent=titleEl.dataset.raw;
+    });
+  }
+  updateEmptyState(visible, q);
+}
+
+function clearSearch(){
+  searchInput.value=''; runSearch(); searchInput.focus();
+}
+
+function updateEmptyState(visible, q){
+  let empty=document.getElementById('emptyState');
+  if(visible===0){
+    if(!empty){
+      empty=document.createElement('div'); empty.id='emptyState'; empty.className='no-results';
+      document.getElementById('feedMain').appendChild(empty);
+    }
+    empty.innerHTML=q
+      ? `<div class="no-results-emoji">🔍</div><div class="no-results-title">No results for "${q}"</div><p style="color:var(--dim);font-size:.88rem;margin-top:8px;">Try different keywords or clear the search.</p>`
+      : `<div class="no-results-emoji">📭</div><div class="no-results-title">No posts in this category yet</div>`;
+    empty.style.display='block';
+  } else if(empty){ empty.style.display='none'; }
+}
+
+searchInput.addEventListener('input', runSearch);
+
+/* ── TAG FILTERING (works with search) ── */
 const filterBtns=document.querySelectorAll('.filter-btn');
 filterBtns.forEach(btn=>{
   btn.addEventListener('click',()=>{
     filterBtns.forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    const filter=btn.dataset.filter;
-    cards.forEach(card=>{
-      const show=filter==='all'||card.dataset.filter===filter;
-      card.style.display=show?'':'none';
-    });
-    const visible=cards.filter(c=>c.style.display!=='none');
-    let empty=document.getElementById('emptyState');
-    if(visible.length===0){
-      if(!empty){
-        empty=document.createElement('div');
-        empty.id='emptyState';
-        empty.className='empty-state';
-        empty.innerHTML=`<div class="empty-emoji">🔍</div><div class="empty-title">No posts yet</div><div class="empty-sub">No ${filter} posts have been published yet. Check back soon!</div>`;
-        document.getElementById('feedMain').appendChild(empty);
-      }
-      empty.style.display='block';
-    } else if(empty){
-      empty.style.display='none';
-    }
+    activeFilter=btn.dataset.filter;
+    runSearch();
   });
+});
+
+/* ── KEYBOARD SHORTCUT: / to focus search ── */
+document.addEventListener('keydown',e=>{
+  if(e.key==='/'&&document.activeElement!==searchInput){
+    e.preventDefault(); searchInput.focus(); searchInput.select();
+  }
+  if(e.key==='Escape'&&document.activeElement===searchInput){
+    clearSearch(); searchInput.blur();
+  }
 });
 </script>
 </body>
