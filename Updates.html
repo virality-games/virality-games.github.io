@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ════════════════════════════════════════
+  🎨 CUSTOMIZE: Page title & SEO
+════════════════════════════════════════ -->
+<title>Updates — Virality Games</title>
+<meta name="description" content="Latest updates, patch notes, and news from Virality Games — Official Roblox Studio.">
+<meta name="author" content="brokenhavenofiacal / Virality Games">
+<meta name="theme-color" content="#e63946">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Virality Games">
+<meta property="og:title" content="Updates — Virality Games">
+<meta property="og:description" content="Latest updates, patch notes, and news from Virality Games.">
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════
+  🎨 CUSTOMIZE: Colors & Theme
+  Change these variables to restyle the
+  entire page instantly!
+════════════════════════════════════════ */
+:root {
+  --accent:     #e63946;   /* 🎨 Main accent color (red) */
+  --accent2:    #ff4d5a;   /* 🎨 Lighter accent */
+  --accent3:    #ff8a93;   /* 🎨 Even lighter accent */
+  --gold:       #ffd700;   /* 🎨 Gold / highlight color */
+  --gold2:      #ffaa00;
+  --dark:       #080810;   /* 🎨 Page background */
+  --dark2:      #0e0e1a;
+  --dark3:      #141425;
+  --glass:      rgba(255,255,255,.04);
+  --glassb:     rgba(255,255,255,.08);
+  --border:     rgba(255,255,255,.08);
+  --border2:    rgba(255,255,255,.15);
+  --text:       #f2f2ff;   /* 🎨 Main text color */
+  --dim:        #8888aa;   /* 🎨 Muted text color */
+  --green:      #10b981;
+  --blue:       #1e90ff;
+  --purple:     #9333ea;
+
+  /* ── Update tag colors ──────────────────
+     Add or change tag colors here.
+     Use them in posts with class="tag-XXXX"
+  ─────────────────────────────────────── */
+  --tag-update:    #1e90ff;
+  --tag-hotfix:    #e63946;
+  --tag-new:       #10b981;
+  --tag-notice:    #ffd700;
+  --tag-event:     #9333ea;
+  --tag-devlog:    #f97316;
+
+  --radius-sm: 12px;
+  --radius:    20px;
+  --radius-lg: 28px;
+}
+
+/* ════════════════════════════════════════
+  BASE RESET
+════════════════════════════════════════ */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body { font-family:'Nunito',sans-serif; background:var(--dark); color:var(--text); overflow-x:hidden; }
+a { color:inherit; }
+@media(pointer:fine) { body { cursor:none; } }
+
+/* ════════════════════════════════════════
+  CURSOR
+════════════════════════════════════════ */
+#cursor, #cursor-dot { position:fixed; pointer-events:none; z-index:9999; display:none; }
+@media(pointer:fine) {
+  #cursor { display:block; width:18px; height:18px; border:2px solid var(--accent2); border-radius:50%; transform:translate(-50%,-50%); transition:width .2s,height .2s,background .2s; }
+  #cursor-dot { display:block; width:4px; height:4px; background:var(--accent2); border-radius:50%; transform:translate(-50%,-50%); }
+  .cx #cursor { width:36px; height:36px; background:rgba(230,57,70,.12); }
+}
+
+/* ════════════════════════════════════════
+  BACKGROUND
+════════════════════════════════════════ */
+#bg { position:fixed; inset:0; z-index:0; background:var(--dark); overflow:hidden; }
+.bg-orb { position:absolute; border-radius:50%; filter:blur(100px); animation:orbDrift linear infinite; }
+@keyframes orbDrift {
+  0%  { transform:translate(0,0) scale(1); opacity:0; }
+  10% { opacity:1; }
+  50% { transform:translate(var(--dx),var(--dy)) scale(1.3); }
+  90% { opacity:.5; }
+  100%{ transform:translate(calc(var(--dx)*2),calc(var(--dy)*2)) scale(.8); opacity:0; }
+}
+.grid-overlay {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image: linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
+}
+.scanline { position:fixed; inset:0; z-index:1; pointer-events:none; background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px); }
+#pxl { position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden; }
+.pixel { position:absolute; border-radius:2px; animation:rise linear infinite; }
+@keyframes rise { 0%{transform:translateY(110vh) rotate(0);opacity:0;} 8%{opacity:.5;} 92%{opacity:.2;} 100%{transform:translateY(-10vh) rotate(720deg);opacity:0;} }
+
+/* ════════════════════════════════════════
+  NAV
+════════════════════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 clamp(16px,4vw,48px); height:64px;
+  background:rgba(8,8,16,.85); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo { font-family:'Fredoka One',cursive; font-size:clamp(1.1rem,3vw,1.5rem); letter-spacing:1.5px; background:linear-gradient(120deg,var(--accent2),var(--accent3),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-decoration:none; flex-shrink:0; }
+.nav-links { display:flex; align-items:center; gap:clamp(14px,2.5vw,28px); }
+.nav-links a { font-size:.76rem; font-weight:800; letter-spacing:.5px; text-transform:uppercase; color:var(--dim); text-decoration:none; transition:color .25s; position:relative; white-space:nowrap; }
+.nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:2px; border-radius:2px; background:linear-gradient(90deg,var(--accent),var(--accent3)); transform:scaleX(0); transform-origin:left; transition:transform .3s cubic-bezier(.16,1,.3,1); }
+.nav-links a:hover { color:var(--text); }
+.nav-links a:hover::after { transform:scaleX(1); }
+.nav-links a.active { color:var(--accent3) !important; }
+.nav-links a.active::after { transform:scaleX(1); }
+.nav-cta { padding:8px 18px !important; border-radius:10px !important; background:linear-gradient(135deg,var(--accent),var(--accent3)) !important; color:#fff !important; font-weight:900 !important; box-shadow:0 4px 16px rgba(230,57,70,.35) !important; }
+.nav-cta::after { display:none !important; }
+.nav-burger { display:none; flex-direction:column; gap:5px; background:none; border:none; padding:8px; }
+.nav-burger span { display:block; width:22px; height:2px; background:var(--dim); border-radius:2px; transition:all .3s; }
+.nav-mobile { display:none; position:fixed; top:64px; left:0; right:0; z-index:499; background:rgba(8,8,16,.97); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); max-height:0; overflow:hidden; transition:max-height .4s cubic-bezier(.16,1,.3,1),padding .3s; }
+.nav-mobile.open { max-height:440px; padding:16px 0 24px; }
+.nav-mobile a { display:block; padding:14px clamp(16px,4vw,32px); font-size:.95rem; font-weight:800; color:var(--dim); text-decoration:none; letter-spacing:.5px; text-transform:uppercase; transition:color .2s; }
+.nav-mobile a:hover { color:var(--accent3); }
+.nav-mobile .mob-cta { margin:12px clamp(16px,4vw,32px) 0; display:block; text-align:center; padding:14px; border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent3)); color:#fff !important; box-shadow:0 4px 20px rgba(230,57,70,.35); }
+@media(max-width:860px) { .nav-links{display:none;} .nav-burger{display:flex;} .nav-mobile{display:block;} }
+
+/* ════════════════════════════════════════
+  PAGE HEADER
+════════════════════════════════════════ */
+.page-header {
+  position:relative; z-index:2;
+  padding:clamp(110px,18vh,160px) clamp(16px,5vw,64px) clamp(48px,8vw,80px);
+  max-width:1100px; margin:0 auto;
+}
+.page-eyebrow { display:inline-flex; align-items:center; gap:10px; padding:6px 18px; border-radius:999px; background:var(--glass); border:1px solid var(--border2); backdrop-filter:blur(12px); font-size:.7rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--accent3); margin-bottom:24px; }
+.live-dot { width:7px; height:7px; border-radius:50%; background:var(--accent2); flex-shrink:0; animation:livePulse 1.4s ease-in-out infinite; }
+@keyframes livePulse { 0%,100%{box-shadow:0 0 0 0 rgba(230,57,70,.5);} 50%{box-shadow:0 0 0 7px rgba(230,57,70,0);} }
+.page-title { font-family:'Fredoka One',cursive; font-size:clamp(3rem,10vw,7rem); line-height:.92; margin-bottom:20px; }
+.page-title .t1 { display:block; background:linear-gradient(160deg,#fff,#ccc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.page-title .t2 { display:block; background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3),var(--gold)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 50px rgba(230,57,70,.5)); }
+.page-desc { color:var(--dim); font-size:clamp(.9rem,2vw,1.1rem); line-height:1.78; max-width:560px; }
+
+/* filter bar */
+.filter-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:32px; }
+.filter-btn { padding:7px 18px; border-radius:999px; background:var(--glass); border:1px solid var(--border); font-family:'Nunito',sans-serif; font-size:.75rem; font-weight:800; color:var(--dim); letter-spacing:.5px; text-transform:uppercase; transition:all .22s; }
+.filter-btn:hover, .filter-btn.active { background:var(--glassb); border-color:var(--border2); color:var(--text); }
+.filter-btn.active { border-color:var(--accent); color:var(--accent3); }
+
+/* ════════════════════════════════════════
+  UPDATES FEED
+════════════════════════════════════════ */
+.feed-wrap { position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:0 clamp(16px,5vw,64px) 120px; display:flex; gap:clamp(24px,4vw,48px); align-items:flex-start; }
+
+/* sidebar (desktop) */
+.feed-sidebar { width:220px; flex-shrink:0; position:sticky; top:84px; }
+@media(max-width:900px) { .feed-sidebar { display:none; } }
+.sidebar-label { font-size:.68rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--dim); margin-bottom:14px; padding-left:4px; }
+.sidebar-links { display:flex; flex-direction:column; gap:4px; }
+.sidebar-link { display:block; padding:9px 14px; border-radius:10px; font-size:.82rem; font-weight:700; color:var(--dim); text-decoration:none; transition:all .2s; border:1px solid transparent; }
+.sidebar-link:hover { color:var(--text); background:var(--glass); border-color:var(--border); }
+.sidebar-link.active-link { color:var(--accent3); background:rgba(230,57,70,.06); border-color:rgba(230,57,70,.2); }
+
+/* main feed */
+.feed-main { flex:1; min-width:0; display:flex; flex-direction:column; gap:32px; }
+
+/* ════════════════════════════════════════
+  UPDATE CARD
+  🔧 HOW TO ADD A NEW UPDATE:
+  Copy the block below, paste it at the
+  top of .feed-main, and fill it in!
+════════════════════════════════════════ */
+.update-card {
+  background:var(--glass); border:1px solid var(--border);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-radius:var(--radius-lg); overflow:hidden;
+  position:relative;
+  transition:border-color .3s, box-shadow .3s;
+  scroll-margin-top:90px;
+}
+.update-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent); }
+.update-card:hover { border-color:var(--border2); box-shadow:0 16px 60px rgba(0,0,0,.4); }
+
+/* accent strip on left — changes per tag type */
+.update-card::after { content:''; position:absolute; top:0; left:0; bottom:0; width:4px; }
+.update-card[data-tag="update"]::after  { background:linear-gradient(to bottom,var(--tag-update),transparent); }
+.update-card[data-tag="hotfix"]::after  { background:linear-gradient(to bottom,var(--tag-hotfix),transparent); }
+.update-card[data-tag="new"]::after     { background:linear-gradient(to bottom,var(--tag-new),transparent); }
+.update-card[data-tag="notice"]::after  { background:linear-gradient(to bottom,var(--tag-notice),transparent); }
+.update-card[data-tag="event"]::after   { background:linear-gradient(to bottom,var(--tag-event),transparent); }
+.update-card[data-tag="devlog"]::after  { background:linear-gradient(to bottom,var(--tag-devlog),transparent); }
+
+.update-inner { padding:clamp(24px,4vw,40px) clamp(24px,4vw,40px) clamp(20px,3vw,32px) clamp(32px,5vw,52px); }
+
+/* card header row */
+.update-meta { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:16px; }
+.update-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 13px; border-radius:999px;
+  font-size:.64rem; font-weight:900; letter-spacing:1.5px; text-transform:uppercase;
+  color:#fff;
+}
+.tag-update  { background:var(--tag-update); box-shadow:0 3px 12px rgba(30,144,255,.35); }
+.tag-hotfix  { background:var(--tag-hotfix); box-shadow:0 3px 12px rgba(230,57,70,.35); }
+.tag-new     { background:var(--tag-new);    box-shadow:0 3px 12px rgba(16,185,129,.35); }
+.tag-notice  { background:var(--tag-notice); color:#000 !important; box-shadow:0 3px 12px rgba(255,215,0,.35); }
+.tag-event   { background:var(--tag-event);  box-shadow:0 3px 12px rgba(147,51,234,.35); }
+.tag-devlog  { background:var(--tag-devlog); box-shadow:0 3px 12px rgba(249,115,22,.35); }
+
+.update-date { font-family:'Orbitron',monospace; font-size:.65rem; font-weight:700; color:var(--dim); letter-spacing:1px; }
+.update-game-badge { display:inline-flex; align-items:center; gap:5px; padding:3px 10px; border-radius:999px; background:var(--glassb); border:1px solid var(--border); font-size:.65rem; font-weight:800; color:var(--dim); }
+
+/* card title */
+.update-title { font-family:'Fredoka One',cursive; font-size:clamp(1.4rem,3vw,2rem); line-height:1.1; margin-bottom:14px; }
+
+/* card body — you write your update content inside .update-body */
+.update-body { color:var(--dim); font-size:clamp(.88rem,1.4vw,.97rem); line-height:1.82; }
+.update-body p { margin-bottom:14px; }
+.update-body p:last-child { margin-bottom:0; }
+.update-body h3 { font-family:'Fredoka One',cursive; font-size:1.1rem; color:var(--text); margin:20px 0 8px; }
+.update-body ul { padding-left:0; list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
+.update-body ul li { display:flex; align-items:flex-start; gap:10px; }
+.update-body ul li::before { content:'→'; color:var(--accent3); font-weight:900; flex-shrink:0; margin-top:1px; }
+.update-body strong { color:var(--text); font-weight:800; }
+.update-body em { color:var(--accent3); font-style:normal; font-weight:700; }
+.update-body .note { display:flex; align-items:flex-start; gap:12px; padding:14px 18px; border-radius:12px; background:rgba(255,215,0,.06); border:1px solid rgba(255,215,0,.15); margin:16px 0; font-size:.9rem; }
+.update-body .note-icon { font-size:1.1rem; flex-shrink:0; }
+.update-body .warn { background:rgba(230,57,70,.06); border-color:rgba(230,57,70,.18); }
+.update-body .good { background:rgba(16,185,129,.06); border-color:rgba(16,185,129,.18); }
+.update-body img { border-radius:14px; margin:16px 0; max-width:100%; border:1px solid var(--border); }
+.update-body .btn { display:inline-flex; align-items:center; gap:8px; padding:11px 24px; border-radius:var(--radius-sm); background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; font-family:'Nunito',sans-serif; font-weight:900; font-size:.9rem; text-decoration:none; box-shadow:0 5px 20px rgba(230,57,70,.3); transition:transform .2s,box-shadow .2s; margin-top:8px; display:inline-flex; }
+.update-body .btn:hover { transform:translateY(-2px) scale(1.03); box-shadow:0 10px 28px rgba(230,57,70,.45); }
+.update-body .btn-ghost { background:var(--glass); border:1px solid var(--border2); box-shadow:none; }
+.update-body .btn-ghost:hover { background:var(--glassb); }
+
+/* divider within a card */
+.update-divider { height:1px; background:linear-gradient(90deg,transparent,var(--border2),transparent); margin:24px 0; }
+
+/* comments section */
+.update-comments { border-top:1px solid var(--border); padding:clamp(20px,3vw,32px) clamp(24px,4vw,40px) clamp(20px,3vw,32px) clamp(32px,5vw,52px); }
+.comments-label { display:flex; align-items:center; gap:10px; font-family:'Fredoka One',cursive; font-size:1rem; color:var(--dim); margin-bottom:20px; }
+.comments-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+/* ════════════════════════════════════════
+  EMPTY STATE
+════════════════════════════════════════ */
+.empty-state { text-align:center; padding:80px 24px; }
+.empty-emoji { font-size:4rem; margin-bottom:16px; }
+.empty-title { font-family:'Fredoka One',cursive; font-size:1.8rem; margin-bottom:10px; color:var(--dim); }
+.empty-sub { color:var(--dim); font-size:.92rem; opacity:.6; }
+
+/* ════════════════════════════════════════
+  REVEAL
+════════════════════════════════════════ */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1); }
+.reveal.in { opacity:1; transform:none; }
+.rd1{transition-delay:.06s;} .rd2{transition-delay:.12s;} .rd3{transition-delay:.18s;}
+
+/* ════════════════════════════════════════
+  GISCUS THEME OVERRIDE
+════════════════════════════════════════ */
+.giscus { margin-top:8px; }
+</style>
+</head>
+<body>
+
+<div id="bg"><div class="grid-overlay"></div><div class="scanline"></div></div>
+<div id="pxl"></div>
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- ════════════════════════════════════════
+  NAV
+════════════════════════════════════════ -->
+<nav>
+  <a href="virality-games.html" class="nav-logo">⚡ VIRALITY GAMES</a>
+  <div class="nav-links">
+    <a href="virality-games.html#games">Games</a>
+    <a href="virality-games.html#groups">Groups</a>
+    <a href="virality-games.html#story">Story</a>
+    <a href="virality-games.html#about">About</a>
+    <a href="virality-games.html#faq">FAQ</a>
+    <a href="updates.html" class="active">📣 Updates</a>
+    <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" class="nav-cta">Join Now →</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="virality-games.html#games" onclick="closeNav()">🎮 Games</a>
+  <a href="virality-games.html#groups" onclick="closeNav()">🏠 Groups</a>
+  <a href="virality-games.html#story" onclick="closeNav()">📖 Story</a>
+  <a href="virality-games.html#about" onclick="closeNav()">👋 About</a>
+  <a href="virality-games.html#faq" onclick="closeNav()">❓ FAQ</a>
+  <a href="updates.html" onclick="closeNav()" style="color:var(--gold2);">📣 Updates</a>
+  <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" class="mob-cta">Join Now on Roblox →</a>
+</div>
+
+<!-- ════════════════════════════════════════
+  PAGE HEADER
+════════════════════════════════════════ -->
+<div class="page-header reveal">
+  <div class="page-eyebrow"><span class="live-dot"></span>Dev Blog · Patch Notes · Announcements</div>
+  <h1 class="page-title">
+    <span class="t1">STUDIO</span>
+    <span class="t2">UPDATES</span>
+  </h1>
+  <p class="page-desc">The latest from Virality Games — patch notes, new features, dev logs, and everything happening behind the scenes. React and comment on any post below.</p>
+
+  <!-- ════════════════════════════════════
+    🎨 CUSTOMIZE: Filter buttons
+    Add a button for each tag type you use.
+    data-filter must match a tag class name.
+  ════════════════════════════════════════ -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All Posts</button>
+    <button class="filter-btn" data-filter="new">🟢 New</button>
+    <button class="filter-btn" data-filter="update">🔵 Update</button>
+    <button class="filter-btn" data-filter="hotfix">🔴 Hotfix</button>
+    <button class="filter-btn" data-filter="event">🟣 Event</button>
+    <button class="filter-btn" data-filter="devlog">🟠 Dev Log</button>
+    <button class="filter-btn" data-filter="notice">🟡 Notice</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+  FEED
+════════════════════════════════════════ -->
+<div class="feed-wrap">
+
+  <!-- SIDEBAR (desktop only — auto-generated by JS) -->
+  <div class="feed-sidebar">
+    <div class="sidebar-label">Jump to Post</div>
+    <div class="sidebar-links" id="sidebarLinks"></div>
+  </div>
+
+  <!-- ════════════════════════════════════
+    MAIN FEED
+    🔧 HOW TO ADD AN UPDATE:
+
+    1. Copy one of the .update-card blocks below
+    2. Paste it above the existing cards (newest first!)
+    3. Change the following:
+       - id="post-XXXX" → unique ID (used for sidebar & comments)
+       - data-tag="XXXX" → update / hotfix / new / notice / event / devlog
+       - data-filter → same as data-tag (for filtering)
+       - .update-tag class → tag-update / tag-hotfix / tag-new / tag-notice / tag-event / tag-devlog
+       - .update-date → the date of the update
+       - .update-game-badge → which game it's for (or "All Games" / "Studio")
+       - .update-title → the title of the post
+       - .update-body → your full update content (supports HTML!)
+    4. Save the file and you're done!
+  ════════════════════════════════════════ -->
+  <div class="feed-main" id="feedMain">
+
+
+    <!-- ══════════════════════════════════
+      EXAMPLE POST 1 — New Game Announcement
+      (Delete or replace this with your real posts)
+    ════════════════════════════════════ -->
+    <div class="update-card reveal rd1" id="post-001" data-tag="new" data-filter="new">
+      <div class="update-inner">
+        <div class="update-meta">
+          <span class="update-tag tag-new">🟢 New Game</span>
+          <span class="update-date">FEBRUARY 2026</span>
+          <span class="update-game-badge">🛒 Super Gaming Cart Ride</span>
+        </div>
+        <div class="update-title">Super Gaming Cart Ride is Live! 🎉</div>
+        <div class="update-body">
+          <p>It's finally here! <strong>Super Gaming Cart Ride</strong> is now live on Roblox — completely free for everyone to play. This is our biggest release yet and we're incredibly proud of what we've built.</p>
+          <h3>What's in the game?</h3>
+          <ul>
+            <li>Multiple gaming-themed tracks across different biomes</li>
+            <li>Dynamic lighting and particle effect systems</li>
+            <li>Works great solo or with friends</li>
+            <li>Completely free — no passes, no pay-to-win</li>
+          </ul>
+          <div class="note good">
+            <span class="note-icon">✅</span>
+            <span>This game is suitable for all ages and follows all Roblox community guidelines.</span>
+          </div>
+          <p>We've been working on this for a while and we're excited to finally get it into your hands. Leave a reaction below and let us know what you think!</p>
+          <a href="https://www.roblox.com/join/5nl6o" target="_blank" class="btn">▶ Play Now on Roblox</a>
+        </div>
+      </div>
+      <div class="update-comments">
+        <div class="comments-label">💬 Reactions &amp; Comments</div>
+        <!-- ════════════════════════════════
+          🔧 GISCUS COMMENTS
+          Each post needs its OWN giscus block.
+          The data-term should match the post ID
+          so each post gets its own thread.
+          Replace the category IDs once you have them!
+        ════════════════════════════════ -->
+        <script src="https://giscus.app/client.js"
+          data-repo="virality-games/virality-games.github.io"
+          data-repo-id="R_kgDOQ359jQ"
+          data-category="Updates"
+          data-category-id="[ENTER CATEGORY ID HERE]"
+          data-mapping="specific"
+          data-term="post-001-cart-ride-launch"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="catppuccin_mocha"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════
+      EXAMPLE POST 2 — Dev Log
+    ════════════════════════════════════ -->
+    <div class="update-card reveal rd2" id="post-002" data-tag="devlog" data-filter="devlog">
+      <div class="update-inner">
+        <div class="update-meta">
+          <span class="update-tag tag-devlog">🟠 Dev Log</span>
+          <span class="update-date">JANUARY 2026</span>
+          <span class="update-game-badge">🍕 Rainbow Pizza Obby</span>
+        </div>
+        <div class="update-title">Dev Log: Building the Pizza Obby 🍕</div>
+        <div class="update-body">
+          <p>Hey everyone! brokenhavenofiacal here. I wanted to share a behind-the-scenes look at what's going into <strong>Rainbow Pizza Obby</strong> before it launches.</p>
+          <h3>Design Decisions</h3>
+          <ul>
+            <li>We went full rainbow — every stage uses a completely different colour palette</li>
+            <li>Difficulty scales gradually from easy stages to extremely challenging final levels</li>
+            <li>TextChatService is being used for in-game chat — works great on all platforms</li>
+          </ul>
+          <h3>What we're still working on</h3>
+          <ul>
+            <li>Balancing the difficulty spike in later stages</li>
+            <li>Adding more checkpoint variety</li>
+            <li>Optimising performance for mobile players</li>
+          </ul>
+          <div class="note">
+            <span class="note-icon">💡</span>
+            <span>Have ideas for stages or mechanics? Drop them in the comments — we actually read everything!</span>
+          </div>
+        </div>
+      </div>
+      <div class="update-comments">
+        <div class="comments-label">💬 Reactions &amp; Comments</div>
+        <script src="https://giscus.app/client.js"
+          data-repo="virality-games/virality-games.github.io"
+          data-repo-id="R_kgDOQ359jQ"
+          data-category="Updates"
+          data-category-id="[ENTER CATEGORY ID HERE]"
+          data-mapping="specific"
+          data-term="post-002-pizza-obby-devlog"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="catppuccin_mocha"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════
+      EXAMPLE POST 3 — Notice
+    ════════════════════════════════════ -->
+    <div class="update-card reveal rd3" id="post-003" data-tag="notice" data-filter="notice">
+      <div class="update-inner">
+        <div class="update-meta">
+          <span class="update-tag tag-notice">🟡 Notice</span>
+          <span class="update-date">NOVEMBER 2025</span>
+          <span class="update-game-badge">🧽 Bob Esponja Obby</span>
+        </div>
+        <div class="update-title">Bob Esponja Obby Has Been Taken Down</div>
+        <div class="update-body">
+          <p>We've removed Bob Esponja Obby from Roblox. The game used copyrighted characters that we did not have permission to use, and upon receiving a copyright concern, we took it down immediately.</p>
+          <div class="note warn">
+            <span class="note-icon">⚠️</span>
+            <span>We take intellectual property rights seriously. No game is worth keeping up if it uses characters or content we don't have rights to. This was the right call, full stop.</span>
+          </div>
+          <p>We apologise to anyone who enjoyed the game. We're committed to only building original experiences — or ones we have explicit permission to create — going forward. The lessons learned here directly shaped how we approach development today.</p>
+        </div>
+      </div>
+      <div class="update-comments">
+        <div class="comments-label">💬 Reactions &amp; Comments</div>
+        <script src="https://giscus.app/client.js"
+          data-repo="virality-games/virality-games.github.io"
+          data-repo-id="R_kgDOQ359jQ"
+          data-category="Updates"
+          data-category-id="[ENTER CATEGORY ID HERE]"
+          data-mapping="specific"
+          data-term="post-003-esponja-takedown"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="catppuccin_mocha"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════
+      🔧 PASTE YOUR NEW POSTS ABOVE THIS LINE
+         (newest posts go at the TOP)
+
+      QUICK TEMPLATE — copy & paste this:
+      ┌─────────────────────────────────────┐
+
+    <div class="update-card reveal" id="post-XXX" data-tag="update" data-filter="update">
+      <div class="update-inner">
+        <div class="update-meta">
+          <span class="update-tag tag-update">🔵 Update</span>
+          <span class="update-date">MONTH YEAR</span>
+          <span class="update-game-badge">🎮 Game Name</span>
+        </div>
+        <div class="update-title">Your Title Here</div>
+        <div class="update-body">
+          <p>Your update text goes here. <strong>Bold text</strong>, <em>highlighted text</em>.</p>
+          <ul>
+            <li>Change one</li>
+            <li>Change two</li>
+            <li>Change three</li>
+          </ul>
+        </div>
+      </div>
+      <div class="update-comments">
+        <div class="comments-label">💬 Reactions &amp; Comments</div>
+        <script src="https://giscus.app/client.js"
+          data-repo="virality-games/virality-games.github.io"
+          data-repo-id="R_kgDOQ359jQ"
+          data-category="Updates"
+          data-category-id="[ENTER CATEGORY ID HERE]"
+          data-mapping="specific"
+          data-term="post-XXX-your-slug"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="catppuccin_mocha"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async>
+        </sc` + `ript>
+      </div>
+    </div>
+
+      └─────────────────────────────────────┘
+    ════════════════════════════════════ -->
+
+  </div><!-- end .feed-main -->
+</div><!-- end .feed-wrap -->
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cursor'),dot=document.getElementById('cursor-dot');
+let mx=0,my=0,cx=0,cy=0,cursorActive=false;
+if(window.matchMedia('(pointer:fine)').matches){
+  cursorActive=true;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function ac(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(ac);})();
+  document.querySelectorAll('a,button,.update-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cx'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cx'));
+  });
+}
+
+/* ── MOBILE NAV ── */
+const burger=document.getElementById('navBurger');
+const navMob=document.getElementById('navMobile');
+let navOpen=false;
+burger.addEventListener('click',()=>{
+  navOpen=!navOpen;
+  navMob.classList.toggle('open',navOpen);
+  const spans=burger.querySelectorAll('span');
+  if(navOpen){spans[0].style.transform='rotate(45deg) translate(5px,5px)';spans[1].style.opacity='0';spans[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
+  else{spans.forEach(s=>{s.style.transform='';s.style.opacity='';});}
+});
+function closeNav(){navOpen=false;navMob.classList.remove('open');burger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}
+
+/* ── BG ORBS ── */
+const bg=document.getElementById('bg');
+[
+  {w:600,h:600,x:'5%',y:'-15%',c:'rgba(230,57,70,.14)',dx:'50px',dy:'70px',dur:'22s',del:'0s'},
+  {w:500,h:500,x:'75%',y:'55%',c:'rgba(124,58,237,.1)',dx:'-70px',dy:'-50px',dur:'28s',del:'-8s'},
+  {w:400,h:400,x:'40%',y:'65%',c:'rgba(30,144,255,.08)',dx:'80px',dy:'-35px',dur:'18s',del:'-4s'},
+].forEach(o=>{
+  const d=document.createElement('div');d.className='bg-orb';
+  Object.assign(d.style,{width:o.w+'px',height:o.h+'px',left:o.x,top:o.y,background:o.c,'--dx':o.dx,'--dy':o.dy,animationDuration:o.dur,animationDelay:o.del});
+  bg.appendChild(d);
+});
+
+/* ── PIXELS ── */
+const pxl=document.getElementById('pxl');
+const cols=['#e63946','#ff6b6b','#9333ea','#1e90ff','#ffd700','#10b981'];
+const cnt=window.innerWidth<600?10:22;
+for(let i=0;i<cnt;i++){
+  const p=document.createElement('div');p.className='pixel';
+  const sz=2+Math.random()*6;
+  Object.assign(p.style,{width:sz+'px',height:sz+'px',left:(Math.random()*100)+'vw',background:cols[Math.floor(Math.random()*cols.length)],borderRadius:Math.random()>.5?'50%':'2px',animationDuration:(12+Math.random()*16)+'s',animationDelay:(Math.random()*16)+'s'});
+  pxl.appendChild(p);
+}
+
+/* ── SCROLL REVEAL ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── SIDEBAR AUTO-BUILD ── */
+const cards=[...document.querySelectorAll('.update-card[id]')];
+const sidebarLinks=document.getElementById('sidebarLinks');
+cards.forEach(card=>{
+  const title=card.querySelector('.update-title');
+  const date=card.querySelector('.update-date');
+  const tag=card.querySelector('.update-tag');
+  if(!title)return;
+  const a=document.createElement('a');
+  a.className='sidebar-link';
+  a.href='#'+card.id;
+  a.textContent=(date?date.textContent+' — ':'')+title.textContent.slice(0,28)+(title.textContent.length>28?'…':'');
+  sidebarLinks.appendChild(a);
+});
+/* highlight active sidebar link on scroll */
+const sideObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.sidebar-link').forEach(l=>l.classList.remove('active-link'));
+      const activeLink=sidebarLinks.querySelector(`a[href="#${e.target.id}"]`);
+      if(activeLink)activeLink.classList.add('active-link');
+    }
+  });
+},{threshold:.4,rootMargin:'-80px 0px -40% 0px'});
+cards.forEach(c=>sideObs.observe(c));
+
+/* ── TAG FILTERING ── */
+const filterBtns=document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter=btn.dataset.filter;
+    cards.forEach(card=>{
+      const show=filter==='all'||card.dataset.filter===filter;
+      card.style.display=show?'':'none';
+    });
+    /* show empty state if nothing visible */
+    const visible=cards.filter(c=>c.style.display!=='none');
+    let empty=document.getElementById('emptyState');
+    if(visible.length===0){
+      if(!empty){
+        empty=document.createElement('div');
+        empty.id='emptyState';
+        empty.className='empty-state';
+        empty.innerHTML=`<div class="empty-emoji">🔍</div><div class="empty-title">No posts yet</div><div class="empty-sub">No ${filter} posts have been published yet. Check back soon!</div>`;
+        document.getElementById('feedMain').appendChild(empty);
+      }
+      empty.style.display='block';
+    } else if(empty){
+      empty.style.display='none';
+    }
+  });
+});
+</script>
+</body>
+</html>
