@@ -280,13 +280,13 @@ nav {
   NAV
 ════════════════════════════════════════ -->
 <nav>
-  <a href="virality-games.html" class="nav-logo">⚡ VIRALITY GAMES</a>
+  <a href="index.html" class="nav-logo">⚡ VIRALITY GAMES</a>
   <div class="nav-links">
-    <a href="virality-games.html#games">Games</a>
-    <a href="virality-games.html#groups">Groups</a>
-    <a href="virality-games.html#story">Story</a>
-    <a href="virality-games.html#about">About</a>
-    <a href="virality-games.html#faq">FAQ</a>
+    <a href="index.html#games">Games</a>
+    <a href="index.html#groups">Groups</a>
+    <a href="index.html#story">Story</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#faq">FAQ</a>
     <a href="updates.html" class="active">📣 Updates</a>
     <a href="https://www.roblox.com/communities/841655795/VIRALITY-GAMES#!/about" target="_blank" class="nav-cta">Join Now →</a>
   </div>
@@ -388,34 +388,13 @@ nav {
             <span>This game is suitable for all ages and follows all Roblox community guidelines.</span>
           </div>
           <p>We've been working on this for a while and we're excited to finally get it into your hands. Leave a reaction below and let us know what you think!</p>
-          <a href="https://www.roblox.com/join/5nl6o" target="_blank" class="btn">▶ Play Now on Roblox</a>
+          <a href="https://www.roblox.com/join/97xdw" target="_blank" class="btn">▶ Play Now on Roblox</a>
         </div>
       </div>
       <div class="update-comments">
         <div class="comments-label">💬 Reactions &amp; Comments</div>
-        <!-- ════════════════════════════════
-          🔧 GISCUS COMMENTS
-          Each post needs its OWN giscus block.
-          The data-term should match the post ID
-          so each post gets its own thread.
-          Replace the category IDs once you have them!
-        ════════════════════════════════ -->
-        <script src="https://giscus.app/client.js"
-          data-repo="virality-games/virality-games.github.io"
-          data-repo-id="R_kgDOQ359jQ"
-          data-category="Updates"
-          data-category-id="DIC_kwDOQ359jc4C3IMU"
-          data-mapping="specific"
-          data-term="post-001-cart-ride-launch"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="catppuccin_mocha"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
-        </script>
+        <!-- GISCUS: data-term is the unique thread ID for this post -->
+        <div class="giscus-widget" data-term="post-001-cart-ride-launch"></div>
       </div>
     </div>
 
@@ -453,22 +432,7 @@ nav {
       </div>
       <div class="update-comments">
         <div class="comments-label">💬 Reactions &amp; Comments</div>
-        <script src="https://giscus.app/client.js"
-          data-repo="virality-games/virality-games.github.io"
-          data-repo-id="R_kgDOQ359jQ"
-          data-category="Updates"
-          data-category-id="DIC_kwDOQ359jc4C3IMU"
-          data-mapping="specific"
-          data-term="post-002-pizza-obby-devlog"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="catppuccin_mocha"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
-        </script>
+        <div class="giscus-widget" data-term="post-002-pizza-obby-devlog"></div>
       </div>
     </div>
 
@@ -495,22 +459,7 @@ nav {
       </div>
       <div class="update-comments">
         <div class="comments-label">💬 Reactions &amp; Comments</div>
-        <script src="https://giscus.app/client.js"
-          data-repo="virality-games/virality-games.github.io"
-          data-repo-id="R_kgDOQ359jQ"
-          data-category="Updates"
-          data-category-id="DIC_kwDOQ359jc4C3IMU"
-          data-mapping="specific"
-          data-term="post-003-esponja-takedown"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="catppuccin_mocha"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
-        </script>
+        <div class="giscus-widget" data-term="post-003-esponja-takedown"></div>
       </div>
     </div>
 
@@ -541,23 +490,7 @@ nav {
       </div>
       <div class="update-comments">
         <div class="comments-label">💬 Reactions &amp; Comments</div>
-        <script src="https://giscus.app/client.js"
-          data-repo="virality-games/virality-games.github.io"
-          data-repo-id="R_kgDOQ359jQ"
-          data-category="Updates"
-          data-category-id="[ENTER CATEGORY ID HERE]"
-          data-mapping="specific"
-          data-term="post-XXX-your-slug"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="catppuccin_mocha"
-          data-lang="en"
-          data-loading="lazy"
-          crossorigin="anonymous"
-          async>
-        </sc` + `ript>
+        <div class="giscus-widget" data-term="post-XXX-your-unique-slug"></div>
       </div>
     </div>
 
@@ -568,6 +501,81 @@ nav {
 </div><!-- end .feed-wrap -->
 
 <script>
+/* ════════════════════════════════════════
+  GISCUS CONFIG
+  🔧 Only change these if your repo/IDs change
+════════════════════════════════════════ */
+const GISCUS_CONFIG = {
+  repo:         'virality-games/virality-games.github.io',
+  repoId:       'R_kgDOQ359jQ',
+  category:     'Updates',
+  categoryId:   'DIC_kwDOQ359jc4C3IMU',
+  theme:        'catppuccin_mocha',
+  lang:         'en',
+};
+
+/* ────────────────────────────────────────
+  Multi-widget Giscus loader.
+  Creates a real iframe per .giscus-widget
+  using IntersectionObserver so they only
+  load when scrolled into view (lazy).
+────────────────────────────────────────── */
+function loadGiscusWidget(container) {
+  if (container.dataset.loaded) return;
+  container.dataset.loaded = 'true';
+
+  const term = container.dataset.term;
+  const iframe = document.createElement('iframe');
+
+  const params = new URLSearchParams({
+    origin:         window.location.origin,
+    session:        '',
+    theme:          GISCUS_CONFIG.theme,
+    reactionsEnabled: '1',
+    emitMetadata:   '0',
+    inputPosition:  'top',
+    repo:           GISCUS_CONFIG.repo,
+    repoId:         GISCUS_CONFIG.repoId,
+    category:       GISCUS_CONFIG.category,
+    categoryId:     GISCUS_CONFIG.categoryId,
+    mapping:        'specific',
+    term:           term,
+    strict:         '0',
+    lang:           GISCUS_CONFIG.lang,
+    loading:        'eager',
+  });
+
+  iframe.src        = 'https://giscus.app/widget?' + params.toString();
+  iframe.title      = 'Comments';
+  iframe.loading    = 'lazy';
+  iframe.style.cssText = 'width:100%;border:none;min-height:200px;color-scheme:dark;';
+  iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-popups allow-forms');
+
+  /* listen for resize messages from the giscus iframe */
+  window.addEventListener('message', (event) => {
+    if (event.origin !== 'https://giscus.app') return;
+    if (typeof event.data !== 'object' || !event.data.giscus) return;
+    const msg = event.data.giscus;
+    if (msg.resizeHeight && iframe.contentWindow === event.source) {
+      iframe.style.height = msg.resizeHeight + 'px';
+    }
+  });
+
+  container.appendChild(iframe);
+}
+
+/* Lazy-load each widget when it enters the viewport */
+const widgetObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      loadGiscusWidget(e.target);
+      widgetObs.unobserve(e.target);
+    }
+  });
+}, { rootMargin: '200px 0px' });
+
+document.querySelectorAll('.giscus-widget').forEach(w => widgetObs.observe(w));
+
 /* ── CURSOR ── */
 const cur=document.getElementById('cursor'),dot=document.getElementById('cursor-dot');
 let mx=0,my=0,cx=0,cy=0,cursorActive=false;
@@ -629,7 +637,6 @@ const sidebarLinks=document.getElementById('sidebarLinks');
 cards.forEach(card=>{
   const title=card.querySelector('.update-title');
   const date=card.querySelector('.update-date');
-  const tag=card.querySelector('.update-tag');
   if(!title)return;
   const a=document.createElement('a');
   a.className='sidebar-link';
@@ -637,7 +644,6 @@ cards.forEach(card=>{
   a.textContent=(date?date.textContent+' — ':'')+title.textContent.slice(0,28)+(title.textContent.length>28?'…':'');
   sidebarLinks.appendChild(a);
 });
-/* highlight active sidebar link on scroll */
 const sideObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -660,7 +666,6 @@ filterBtns.forEach(btn=>{
       const show=filter==='all'||card.dataset.filter===filter;
       card.style.display=show?'':'none';
     });
-    /* show empty state if nothing visible */
     const visible=cards.filter(c=>c.style.display!=='none');
     let empty=document.getElementById('emptyState');
     if(visible.length===0){
