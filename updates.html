@@ -571,18 +571,40 @@ const GISCUS_CONFIG = {
   lang:       'en',
 };
 
+/* ── Extract Giscus session token from URL after OAuth redirect ──
+   When GitHub redirects back after sign-in, it appends ?giscus=TOKEN
+   to the URL. We read it, store it in sessionStorage, then clean the URL
+   so it doesn't show in the address bar. On every page load we also check
+   sessionStorage so the session persists while the tab is open.
+─────────────────────────────────────────────────────────────────── */
+function getGiscusSession() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tokenFromUrl = urlParams.get('giscus');
+  if (tokenFromUrl) {
+    // save it and clean the URL immediately
+    try { sessionStorage.setItem('giscus_session', tokenFromUrl); } catch(e) {}
+    const cleanUrl = window.location.pathname + window.location.hash;
+    window.history.replaceState(null, '', cleanUrl);
+    return tokenFromUrl;
+  }
+  // fall back to stored session from earlier in this tab session
+  try { return sessionStorage.getItem('giscus_session') || ''; } catch(e) { return ''; }
+}
+
+const GISCUS_SESSION = getGiscusSession();
+
 /* ── GISCUS: load one iframe per widget ── */
 function loadGiscusWidget(container) {
   if (container.dataset.loaded) return;
   container.dataset.loaded = 'true';
 
-  // origin must be the full page URL (not just origin) so GitHub OAuth
-  // redirects back to the correct page after sign-in
-  const pageUrl = window.location.href.split('#')[0]; // strip any hash
+  // Full page URL (minus hash) is used as the OAuth callback — GitHub
+  // will redirect back here after sign-in with ?giscus=token appended
+  const pageUrl = window.location.origin + window.location.pathname;
 
   const params = new URLSearchParams({
     origin:           pageUrl,
-    session:          '',
+    session:          GISCUS_SESSION,   // ← pass token so widget knows you're logged in
     theme:            GISCUS_CONFIG.theme,
     reactionsEnabled: '1',
     emitMetadata:     '0',
@@ -603,9 +625,6 @@ function loadGiscusWidget(container) {
   iframe.title = 'Comments';
   iframe.style.cssText = 'width:100%;border:none;min-height:220px;color-scheme:dark;transition:height .3s;';
 
-  // allow-top-navigation-by-user-activation lets the GitHub OAuth button
-  // redirect the top frame; allow-popups-to-escape-sandbox lets the auth
-  // popup communicate back after the user signs in
   iframe.setAttribute('sandbox', [
     'allow-scripts',
     'allow-same-origin',
@@ -625,6 +644,7 @@ function loadGiscusWidget(container) {
 
   container.appendChild(iframe);
 }
+
 const widgetObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { loadGiscusWidget(e.target); widgetObs.unobserve(e.target); } });
 }, { rootMargin: '200px 0px' });
