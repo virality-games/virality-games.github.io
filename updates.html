@@ -575,26 +575,54 @@ const GISCUS_CONFIG = {
 function loadGiscusWidget(container) {
   if (container.dataset.loaded) return;
   container.dataset.loaded = 'true';
+
+  // origin must be the full page URL (not just origin) so GitHub OAuth
+  // redirects back to the correct page after sign-in
+  const pageUrl = window.location.href.split('#')[0]; // strip any hash
+
   const params = new URLSearchParams({
-    origin: window.location.origin, session: '',
-    theme: GISCUS_CONFIG.theme, reactionsEnabled: '1',
-    emitMetadata: '0', inputPosition: 'top',
-    repo: GISCUS_CONFIG.repo, repoId: GISCUS_CONFIG.repoId,
-    category: GISCUS_CONFIG.category, categoryId: GISCUS_CONFIG.categoryId,
-    mapping: 'specific', term: container.dataset.term,
-    strict: '0', lang: GISCUS_CONFIG.lang, loading: 'eager',
+    origin:           pageUrl,
+    session:          '',
+    theme:            GISCUS_CONFIG.theme,
+    reactionsEnabled: '1',
+    emitMetadata:     '0',
+    inputPosition:    'top',
+    repo:             GISCUS_CONFIG.repo,
+    repoId:           GISCUS_CONFIG.repoId,
+    category:         GISCUS_CONFIG.category,
+    categoryId:       GISCUS_CONFIG.categoryId,
+    mapping:          'specific',
+    term:             container.dataset.term,
+    strict:           '0',
+    lang:             GISCUS_CONFIG.lang,
+    loading:          'eager',
   });
+
   const iframe = document.createElement('iframe');
-  iframe.src = 'https://giscus.app/widget?' + params.toString();
-  iframe.title = 'Comments'; iframe.loading = 'lazy';
+  iframe.src   = 'https://giscus.app/widget?' + params.toString();
+  iframe.title = 'Comments';
   iframe.style.cssText = 'width:100%;border:none;min-height:220px;color-scheme:dark;transition:height .3s;';
-  iframe.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-forms');
+
+  // allow-top-navigation-by-user-activation lets the GitHub OAuth button
+  // redirect the top frame; allow-popups-to-escape-sandbox lets the auth
+  // popup communicate back after the user signs in
+  iframe.setAttribute('sandbox', [
+    'allow-scripts',
+    'allow-same-origin',
+    'allow-popups',
+    'allow-popups-to-escape-sandbox',
+    'allow-forms',
+    'allow-top-navigation-by-user-activation',
+    'allow-storage-access-by-user-activation',
+  ].join(' '));
+
   window.addEventListener('message', ev => {
     if (ev.origin !== 'https://giscus.app') return;
     if (typeof ev.data !== 'object' || !ev.data.giscus) return;
     if (ev.data.giscus.resizeHeight && iframe.contentWindow === ev.source)
       iframe.style.height = ev.data.giscus.resizeHeight + 'px';
   });
+
   container.appendChild(iframe);
 }
 const widgetObs = new IntersectionObserver(entries => {
