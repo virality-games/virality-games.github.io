@@ -1,0 +1,13 @@
+{
+  "guides": [
+    {
+      "title": "How to Make a Roblox Game",
+      "slug": "how-make-game",
+      "description": "From downloading Roblox Studio to publishing your first game live — no coding or experience needed. Covers building with free models, setting your age rating, and going public.",
+      "image": "https://raw.githubusercontent.com/virality-games/virality-games.github.io/main/img/rainbowpizzapromote.webp",
+      "tag": "Beginner Guide",
+      "tagColor": "#22c55e",
+      "date": "2025-01-01"
+    }
+  ]
+}
