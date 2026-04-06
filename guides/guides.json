@@ -26,6 +26,15 @@
   "tag": "Tips",
   "tagColor": "#7c3aed",
   "date": "2026-04-05"
+},
+    {
+  "title": "How to Remove Viruses From Your Roblox Game",
+  "slug": "remove-virus-roblox-studio",
+  "description": "Free model viruses can lag your game, create fake gamepasses, or give exploiters full server access. Here's how to find and delete them in Roblox Studio.",
+  "image": "https://raw.githubusercontent.com/virality-games/virality-games.github.io/main/img/lookforanythingsus.png",
+  "tag": "Developer",
+  "tagColor": "#ef4444",
+  "date": "2026-04-06"
 }
   ]
 }
