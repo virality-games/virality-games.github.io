@@ -35,6 +35,15 @@
   "tag": "Developer",
   "tagColor": "#ef4444",
   "date": "2026-04-06"
+},
+    {
+  "title": "How to Stop Hackers and Exploiters in Your Roblox Game",
+  "slug": "stop-hackers-exploiters-roblox",
+  "description": "Kick them on the spot, ban them permanently, and install a free anti-cheat so they can never come back. Plus: how to fix the real root cause.",
+  "image": "https://raw.githubusercontent.com/virality-games/virality-games.github.io/main/img/Opentoolboxandsearchforanticheat.png",
+  "tag": "Developer",
+  "tagColor": "#f97316",
+  "date": "2026-04-08"
 }
   ]
 }
