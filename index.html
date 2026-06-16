@@ -562,6 +562,29 @@ footer{position:relative;z-index:2;background:rgba(8,8,16,.95);border-top:1px so
 .konami-title{font-family:'Fredoka One',cursive;font-size:clamp(2rem,6vw,3.5rem);background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .konami-sub{color:var(--dim);font-size:1rem;max-width:420px;line-height:1.7;}
 .konami-close{margin-top:12px;padding:12px 28px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:.95rem;border:none;cursor:pointer;}
+
+
+
+  .simple-banner {
+    position: -webkit-sticky; 
+    position: sticky;         
+    top: 0;
+    margin: 0;                
+    width: 100%;
+    background-color: #ffcc00; 
+    color: #000000;            
+    text-align: center;
+    
+    /* Mobile Improvements */
+    padding: 12px 15px;       /* Adds a bit more finger-friendly padding and side breathing room */
+    box-sizing: border-box;   /* CRITICAL: Prevents the padding from making the banner wider than the phone screen */
+    
+    font-family: sans-serif;
+    font-size: 14px;          /* Clean and readable on small screens */
+    line-height: 1.4;         /* Prevents text overlap if the announcement wraps to 2 lines on a phone */
+    font-weight: bold;
+    z-index: 999; 
+}
 </style>
 </head>
 <body>
@@ -594,6 +617,9 @@ footer{position:relative;z-index:2;background:rgba(8,8,16,.95);border-top:1px so
 </div>
 
 <!-- ══ NAV ══ -->
+<div class="simple-banner">
+    ⚠️ Attention: Virality games has quit.  <a href="updates.html" style="color:var(--gold2)!important;">Read mor</a>
+</div>
 <nav>
   <a href="#" class="nav-logo">⚡ VIRALITY GAMES</a>
   <div class="nav-links">
